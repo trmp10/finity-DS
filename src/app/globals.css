@@ -1,26 +1,435 @@
 @import "tailwindcss";
 
+/* ========================================
+   Finity Design System - Design Tokens
+   ======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ========================================
+     COLOR TOKENS
+     ======================================== */
+
+  /* Base Colors */
+  --color-base-black: #000000;
+  --color-base-white: #FFFFFF;
+
+  /* Grey / Neutral Scale */
+  --color-grey-50: #FAFAFA;
+  --color-grey-100: #F5F5F5;
+  --color-grey-200: #E5E5E5;
+  --color-grey-300: #D4D4D4;
+  --color-grey-400: #A3A3A3;
+  --color-grey-500: #737373;
+  --color-grey-600: #525252;
+  --color-grey-700: #404040;
+  --color-grey-800: #262626;
+  --color-grey-900: #171717;
+
+  /* Coral - Accent */
+  --color-coral-50: #FFF4ED;
+  --color-coral-100: #FEE6D6;
+  --color-coral-200: #FCC8AC;
+  --color-coral-300: #FAA277;
+  --color-coral-400: #F77445;
+  --color-coral-500: #F44C1B;
+  --color-coral-600: #E53311;
+  --color-coral-700: #BE2310;
+  --color-coral-800: #971D15;
+  --color-coral-900: #7A1B14;
+  --color-coral-finity: #FF885D;
+
+  /* Teal - Accent */
+  --color-teal-50: #F4F9F9;
+  --color-teal-100: #D9EEEC;
+  --color-teal-200: #B3DCDA;
+  --color-teal-300: #85C3C2;
+  --color-teal-400: #5AA3A4;
+  --color-teal-500: #42888A;
+  --color-teal-600: #336B6E;
+  --color-teal-700: #2C5659;
+  --color-teal-800: #274548;
+  --color-teal-900: #102023;
+  --color-teal-finity: #8FBDBE;
+
+  /* Red - Semantic (Error) */
+  --color-red-50: #FEF2F2;
+  --color-red-100: #FEE2E2;
+  --color-red-200: #FECACA;
+  --color-red-300: #FCA5A5;
+  --color-red-400: #F87171;
+  --color-red-500: #EF4444;
+  --color-red-600: #DC2626;
+  --color-red-700: #B91C1C;
+  --color-red-800: #991B1B;
+  --color-red-900: #7F1D1D;
+
+  /* Yellow - Semantic (Warning) */
+  --color-yellow-50: #FEFCE8;
+  --color-yellow-100: #FEF9C3;
+  --color-yellow-200: #FEF08A;
+  --color-yellow-300: #FDE047;
+  --color-yellow-400: #FACC15;
+  --color-yellow-500: #EAB308;
+  --color-yellow-600: #CA8A04;
+  --color-yellow-700: #A16207;
+  --color-yellow-800: #854D0E;
+  --color-yellow-900: #713F12;
+
+  /* Green - Semantic (Success) */
+  --color-green-50: #F0FDF4;
+  --color-green-100: #DCFCE7;
+  --color-green-200: #BBF7D0;
+  --color-green-300: #86EFAC;
+  --color-green-400: #4ADE80;
+  --color-green-500: #22C55E;
+  --color-green-600: #16A34A;
+  --color-green-700: #15803D;
+  --color-green-800: #166534;
+  --color-green-900: #14532D;
+
+  /* Semantic Aliases */
+  --color-text-default: var(--color-grey-900);
+  --color-text-secondary: var(--color-grey-700);
+  --color-text-tertiary: var(--color-grey-500);
+  --color-text-disabled: var(--color-grey-400);
+  --color-text-contrast: var(--color-base-white);
+
+  --color-bg-default: var(--color-base-white);
+  --color-bg-subtle: var(--color-grey-50);
+  --color-bg-muted: var(--color-grey-100);
+  --color-bg-neutral: var(--color-grey-200);
+  --color-bg-inverse: var(--color-base-black);
+
+  --color-border-subtle: var(--color-grey-300);
+  --color-border-default: var(--color-grey-400);
+  --color-border-strong: var(--color-grey-500);
+
+  --color-error: var(--color-red-500);
+  --color-error-light: var(--color-red-100);
+  --color-warning: var(--color-yellow-500);
+  --color-warning-light: var(--color-yellow-100);
+  --color-success: var(--color-green-500);
+  --color-success-light: var(--color-green-100);
+
+  /* Legacy aliases for compatibility */
+  --background: var(--color-bg-default);
+  --foreground: var(--color-text-default);
+
+  /* ========================================
+     TYPOGRAPHY TOKENS
+     ======================================== */
+
+  /* Font Family */
+  --font-family-primary: "PP Neue Montreal", system-ui, -apple-system, sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Font Sizes */
+  --font-size-heading-xl: 2rem;        /* 32px */
+  --font-size-heading-lg: 1.5rem;      /* 24px */
+  --font-size-heading-md: 1.25rem;     /* 20px */
+  --font-size-heading-sm: 1.125rem;    /* 18px */
+  --font-size-body: 1rem;              /* 16px */
+  --font-size-compact: 0.875rem;       /* 14px */
+  --font-size-small: 0.75rem;          /* 12px */
+
+  /* Line Heights */
+  --line-height-heading-xl: 2.5rem;    /* 40px */
+  --line-height-heading-lg: 2rem;      /* 32px */
+  --line-height-heading-md: 1.75rem;   /* 28px */
+  --line-height-heading-sm: 1.5625rem; /* 25px */
+  --line-height-body: 1.375rem;        /* 22px */
+  --line-height-compact: 1.25rem;      /* 20px */
+  --line-height-small: 1rem;           /* 16px */
+
+  /* Letter Spacing */
+  --letter-spacing-tight: 0.0125rem;   /* 0.2px - headings */
+  --letter-spacing-normal: 0.022rem;   /* 0.35px - body */
+  --letter-spacing-wide: 0.01875rem;   /* 0.3px - compact/small */
+
+  /* ========================================
+     SPACING TOKENS
+     ======================================== */
+
+  --spacing-0: 0px;
+  --spacing-2: 0.125rem;    /* 2px */
+  --spacing-4: 0.25rem;     /* 4px */
+  --spacing-8: 0.5rem;      /* 8px */
+  --spacing-12: 0.75rem;    /* 12px */
+  --spacing-16: 1rem;       /* 16px */
+  --spacing-20: 1.25rem;    /* 20px */
+  --spacing-24: 1.5rem;     /* 24px */
+  --spacing-32: 2rem;       /* 32px */
+  --spacing-40: 2.5rem;     /* 40px */
+  --spacing-48: 3rem;       /* 48px */
+  --spacing-56: 3.5rem;     /* 56px */
+  --spacing-64: 4rem;       /* 64px */
+  --spacing-80: 5rem;       /* 80px */
+  --spacing-96: 6rem;       /* 96px */
+  --spacing-128: 8rem;      /* 128px */
+  --spacing-160: 10rem;     /* 160px */
+  --spacing-208: 13rem;     /* 208px */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ========================================
+     TAILWIND THEME - COLORS
+     ======================================== */
+
+  /* Base */
+  --color-base-black: var(--color-base-black);
+  --color-base-white: var(--color-base-white);
+
+  /* Grey */
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-100: var(--color-grey-100);
+  --color-grey-200: var(--color-grey-200);
+  --color-grey-300: var(--color-grey-300);
+  --color-grey-400: var(--color-grey-400);
+  --color-grey-500: var(--color-grey-500);
+  --color-grey-600: var(--color-grey-600);
+  --color-grey-700: var(--color-grey-700);
+  --color-grey-800: var(--color-grey-800);
+  --color-grey-900: var(--color-grey-900);
+
+  /* Coral */
+  --color-coral-50: var(--color-coral-50);
+  --color-coral-100: var(--color-coral-100);
+  --color-coral-200: var(--color-coral-200);
+  --color-coral-300: var(--color-coral-300);
+  --color-coral-400: var(--color-coral-400);
+  --color-coral-500: var(--color-coral-500);
+  --color-coral-600: var(--color-coral-600);
+  --color-coral-700: var(--color-coral-700);
+  --color-coral-800: var(--color-coral-800);
+  --color-coral-900: var(--color-coral-900);
+  --color-coral-finity: var(--color-coral-finity);
+
+  /* Teal */
+  --color-teal-50: var(--color-teal-50);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-200: var(--color-teal-200);
+  --color-teal-300: var(--color-teal-300);
+  --color-teal-400: var(--color-teal-400);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-700: var(--color-teal-700);
+  --color-teal-800: var(--color-teal-800);
+  --color-teal-900: var(--color-teal-900);
+  --color-teal-finity: var(--color-teal-finity);
+
+  /* Red */
+  --color-red-50: var(--color-red-50);
+  --color-red-100: var(--color-red-100);
+  --color-red-200: var(--color-red-200);
+  --color-red-300: var(--color-red-300);
+  --color-red-400: var(--color-red-400);
+  --color-red-500: var(--color-red-500);
+  --color-red-600: var(--color-red-600);
+  --color-red-700: var(--color-red-700);
+  --color-red-800: var(--color-red-800);
+  --color-red-900: var(--color-red-900);
+
+  /* Yellow */
+  --color-yellow-50: var(--color-yellow-50);
+  --color-yellow-100: var(--color-yellow-100);
+  --color-yellow-200: var(--color-yellow-200);
+  --color-yellow-300: var(--color-yellow-300);
+  --color-yellow-400: var(--color-yellow-400);
+  --color-yellow-500: var(--color-yellow-500);
+  --color-yellow-600: var(--color-yellow-600);
+  --color-yellow-700: var(--color-yellow-700);
+  --color-yellow-800: var(--color-yellow-800);
+  --color-yellow-900: var(--color-yellow-900);
+
+  /* Green */
+  --color-green-50: var(--color-green-50);
+  --color-green-100: var(--color-green-100);
+  --color-green-200: var(--color-green-200);
+  --color-green-300: var(--color-green-300);
+  --color-green-400: var(--color-green-400);
+  --color-green-500: var(--color-green-500);
+  --color-green-600: var(--color-green-600);
+  --color-green-700: var(--color-green-700);
+  --color-green-800: var(--color-green-800);
+  --color-green-900: var(--color-green-900);
+
+  /* Semantic */
+  --color-background: var(--color-bg-default);
+  --color-foreground: var(--color-text-default);
+
+  /* ========================================
+     TAILWIND THEME - TYPOGRAPHY
+     ======================================== */
+
+  /* Font Family */
+  --font-sans: var(--font-family-primary);
+
+  /* Heading Extra Large */
+  --font-size-heading-xl: var(--font-size-heading-xl);
+  --line-height-heading-xl: var(--line-height-heading-xl);
+  --letter-spacing-heading-xl: var(--letter-spacing-tight);
+
+  /* Heading Large */
+  --font-size-heading-lg: var(--font-size-heading-lg);
+  --line-height-heading-lg: var(--line-height-heading-lg);
+  --letter-spacing-heading-lg: var(--letter-spacing-tight);
+
+  /* Heading Medium */
+  --font-size-heading-md: var(--font-size-heading-md);
+  --line-height-heading-md: var(--line-height-heading-md);
+  --letter-spacing-heading-md: var(--letter-spacing-tight);
+
+  /* Heading Small */
+  --font-size-heading-sm: var(--font-size-heading-sm);
+  --line-height-heading-sm: var(--line-height-heading-sm);
+  --letter-spacing-heading-sm: var(--letter-spacing-tight);
+
+  /* Body */
+  --font-size-body: var(--font-size-body);
+  --line-height-body: var(--line-height-body);
+  --letter-spacing-body: var(--letter-spacing-normal);
+
+  /* Compact */
+  --font-size-compact: var(--font-size-compact);
+  --line-height-compact: var(--line-height-compact);
+  --letter-spacing-compact: var(--letter-spacing-wide);
+
+  /* Small */
+  --font-size-small: var(--font-size-small);
+  --line-height-small: var(--line-height-small);
+  --letter-spacing-small: var(--letter-spacing-wide);
+
+  /* ========================================
+     TAILWIND THEME - SPACING
+     ======================================== */
+
+  --spacing-0: var(--spacing-0);
+  --spacing-2: var(--spacing-2);
+  --spacing-4: var(--spacing-4);
+  --spacing-8: var(--spacing-8);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+  --spacing-32: var(--spacing-32);
+  --spacing-40: var(--spacing-40);
+  --spacing-48: var(--spacing-48);
+  --spacing-56: var(--spacing-56);
+  --spacing-64: var(--spacing-64);
+  --spacing-80: var(--spacing-80);
+  --spacing-96: var(--spacing-96);
+  --spacing-128: var(--spacing-128);
+  --spacing-160: var(--spacing-160);
+  --spacing-208: var(--spacing-208);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg-default: var(--color-grey-900);
+    --color-bg-subtle: var(--color-grey-800);
+    --color-bg-muted: var(--color-grey-700);
+    --color-bg-neutral: var(--color-grey-600);
+    --color-bg-inverse: var(--color-base-white);
+
+    --color-text-default: var(--color-grey-50);
+    --color-text-secondary: var(--color-grey-300);
+    --color-text-tertiary: var(--color-grey-400);
+    --color-text-disabled: var(--color-grey-500);
+    --color-text-contrast: var(--color-base-black);
+
+    --color-border-subtle: var(--color-grey-700);
+    --color-border-default: var(--color-grey-600);
+    --color-border-strong: var(--color-grey-500);
+
+    --background: var(--color-bg-default);
+    --foreground: var(--color-text-default);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-default);
+  color: var(--color-text-default);
+  font-family: var(--font-family-primary);
+}
+
+/* ========================================
+   Typography Utility Classes
+   ======================================== */
+
+/* Headings */
+.text-heading-xl {
+  font-size: var(--font-size-heading-xl);
+  line-height: var(--line-height-heading-xl);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-heading-lg {
+  font-size: var(--font-size-heading-lg);
+  line-height: var(--line-height-heading-lg);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-heading-md {
+  font-size: var(--font-size-heading-md);
+  line-height: var(--line-height-heading-md);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-heading-sm {
+  font-size: var(--font-size-heading-sm);
+  line-height: var(--line-height-heading-sm);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Body */
+.text-body-semibold {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body-medium {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-body-regular {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Compact */
+.text-compact-semibold {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-compact);
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-compact-medium {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-compact);
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Small */
+.text-small-semibold {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-semibold);
 }
