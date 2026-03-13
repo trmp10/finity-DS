@@ -21,7 +21,8 @@
     "build": "next build",
     "build:lib": "tsup src/index.ts --format cjs,esm --dts --external react react-dom",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync": "bash sync.sh"
   },
   "peerDependencies": {
     "react": ">=18",
