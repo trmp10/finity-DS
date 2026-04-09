@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: light;
+}
+
 /* ========================================
    PP Neue Montreal — self-hosted
    Add font files to public/fonts/ to activate
@@ -371,34 +375,32 @@
   --spacing-208: var(--spacing-208);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-default: var(--color-grey-900);
-    --color-bg-subtle: var(--color-grey-800);
-    --color-bg-muted: var(--color-grey-700);
-    --color-bg-neutral: var(--color-grey-600);
-    --color-bg-inverse: var(--color-base-white);
-
-    --color-text-default: var(--color-grey-50);
-    --color-text-secondary: var(--color-grey-300);
-    --color-text-tertiary: var(--color-grey-400);
-    --color-text-disabled: var(--color-grey-500);
-    --color-text-contrast: var(--color-base-black);
-
-    --color-border-subtle: var(--color-grey-700);
-    --color-border-default: var(--color-grey-600);
-    --color-border-strong: var(--color-grey-500);
-
-    --background: var(--color-bg-default);
-    --foreground: var(--color-text-default);
-  }
-}
 
 body {
   background: var(--color-bg-default);
   color: var(--color-text-default);
   font-family: var(--font-family-primary);
+  font-size: 1rem;
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: var(--font-weight-regular);
 }
+
+/* ========================================
+   Base typography defaults
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-default);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 { font-size: var(--font-size-heading-xl); line-height: var(--line-height-heading-xl); }
+h2 { font-size: var(--font-size-heading-lg); line-height: var(--line-height-heading-lg); }
+h3 { font-size: var(--font-size-heading-md); line-height: var(--line-height-heading-md); }
+h4 { font-size: var(--font-size-heading-sm); line-height: var(--line-height-heading-sm); }
+
 
 /* ========================================
    Typography Utility Classes
