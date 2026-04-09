@@ -162,7 +162,7 @@ function TypeGroup({ title, rows }: { title: string; rows: TypeRow[] }) {
             <div className="flex items-start gap-[var(--spacing-64)] shrink-0">
               {/* Token badge */}
               <div className="w-[160px] shrink-0 pt-[2px]">
-                <span className="inline-flex items-center px-[var(--spacing-8)] py-[var(--spacing-4)] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
+                <span className="inline-flex items-center px-[var(--spacing-8)] py-[2px] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
                   {row.tailwind}
                 </span>
               </div>
@@ -221,7 +221,7 @@ function MappingTable() {
               {row.size.split('  /  ')[1].replace(/([0-9.]+)(rem)/, '$1 $2')}
             </div>
             <div className="w-[175px] shrink-0">
-              <span className="inline-flex items-center px-[var(--spacing-8)] py-[var(--spacing-4)] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
+              <span className="inline-flex items-center px-[var(--spacing-8)] py-[2px] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
                 {row.tailwind}
               </span>
             </div>
@@ -258,9 +258,14 @@ export default function TypographyPage() {
           {/* Title + metadata row */}
           <div className="flex items-start justify-between gap-[var(--spacing-64)] mb-[var(--spacing-40)]">
             <div className="flex flex-col gap-[var(--spacing-16)]">
-              <h1 className="text-[48px] font-semibold leading-[48px] text-[var(--color-text-default)]">
-                Typography
-              </h1>
+              <div className="flex items-center gap-[var(--spacing-12)]">
+                <h1 className="text-[48px] font-semibold leading-[48px] text-[var(--color-text-default)]">
+                  Typography
+                </h1>
+                <span className="inline-flex items-center h-[24px] px-[var(--spacing-8)] rounded-[4px] bg-[var(--color-yellow-100)] border border-[var(--color-yellow-800)] text-[14px] font-medium tracking-[0.3px] leading-[20px] text-[var(--color-yellow-800)] whitespace-nowrap">
+                  ENG BETA
+                </span>
+              </div>
               <p className="text-[16px] font-medium leading-[24px] text-[var(--color-text-secondary)] max-w-[520px]">
                 Our typography is flexible and modular, with a focus on legibility and accessibility.
               </p>
