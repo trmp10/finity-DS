@@ -182,8 +182,8 @@ const MAPPING_SECTIONS = [
     valueHeader: 'Value',
     usageHeader: 'Usage',
     rows: [
-      { name: 'default',        value: 'grey 900',   hex: '#171717', usage: 'Headers • Titles • Values' },
-      { name: 'secondary',      value: 'grey 700',   hex: '#404040', usage: 'Description • Labels'      },
+      { name: 'default',        value: 'grey 900',   hex: '#171717', usage: 'Header • Title • Value' },
+      { name: 'secondary',      value: 'grey 700',   hex: '#404040', usage: 'Description • Label'      },
       { name: 'tertiary',       value: 'grey 500',   hex: '#737373', usage: 'Additional info' },
       { name: 'sidebar',        value: 'grey 400',   hex: '#A3A3A3', usage: 'Menu header'     },
       { name: 'contrast',    value: 'white',      hex: '#FFFFFF', usage: ''                 },
