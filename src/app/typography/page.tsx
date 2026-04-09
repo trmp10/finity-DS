@@ -261,7 +261,7 @@ export default function TypographyPage() {
               <h1 className="text-[48px] font-semibold leading-[48px] text-[var(--color-text-default)]">
                 Typography
               </h1>
-              <p className="text-[16px] font-medium leading-[24px] text-[var(--color-text-secondary)] max-w-[680px]">
+              <p className="text-[16px] font-medium leading-[24px] text-[var(--color-text-secondary)] max-w-[520px]">
                 Our typography is flexible and modular, with a focus on legibility and accessibility.
               </p>
             </div>
@@ -340,33 +340,52 @@ export default function TypographyPage() {
         {tab === 'guidelines' && (
           <div className="flex flex-col gap-[var(--spacing-48)]">
 
-            {/* Sentence case */}
+            {/* Case */}
             <div>
               <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
-                Sentence case
+                Case
               </h2>
-              <p className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] max-w-[680px]">
-                Always use sentence case for UI text. Capitalise only the first word of a sentence and proper nouns. Avoid title case except for proper names or brand-specific terms.
-              </p>
-              <div className="mt-[var(--spacing-24)] flex gap-[var(--spacing-24)]">
-                <div className="flex-1 bg-[var(--color-grey-50,#fafafa)] border border-[var(--color-border-subtle)] rounded-[10px] px-[var(--spacing-24)] py-[var(--spacing-16)]">
-                  <p className="text-[16px] font-semibold text-[#16A34A] mb-[var(--spacing-8)]">Do</p>
-                  <p className="text-[16px] text-[var(--color-text-default)] leading-[24px]">Save your changes</p>
-                  <p className="text-[16px] text-[var(--color-text-default)] leading-[24px]">Add a new item</p>
-                </div>
-                <div className="flex-1 bg-[var(--color-grey-50,#fafafa)] border border-[var(--color-border-subtle)] rounded-[10px] px-[var(--spacing-24)] py-[var(--spacing-16)]">
-                  <p className="text-[16px] font-semibold text-[#DC2626] mb-[var(--spacing-8)]">Don't</p>
-                  <p className="text-[16px] text-[var(--color-text-default)] leading-[24px]">Save Your Changes</p>
-                  <p className="text-[16px] text-[var(--color-text-default)] leading-[24px]">Add A New Item</p>
-                </div>
-              </div>
+              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Sentence case for almost everything (UI labels, headings, body, error messages)</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Title case reserved for proper nouns, product names, and sometimes primary navigation</li>
+              </ul>
             </div>
 
-            {/* Ellipsis */}
+            {/* Truncation */}
             <div>
               <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
-                Truncation guide
+                Truncation
               </h2>
+              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Truncate when a string exceeds the available container width — as a rule of thumb, trigger truncation at ~20–25 characters for table cells, ~30–40 for wider contexts</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Always show at least 8–10 characters before truncating so the string is still identifiable</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Middle truncation for file paths or identifiers where the end matters (e.g. <code className="font-mono text-[14px] bg-[var(--color-grey-100)] px-[4px] py-[1px] rounded-[4px]">invoice_2024_…Q4.pdf</code>)</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Always provide a tooltip or expanded view to reveal the full string</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Never truncate error messages or critical information</li>
+              </ul>
+            </div>
+
+            {/* Punctuation */}
+            <div>
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+                Punctuation
+              </h2>
+              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">No period at the end of labels, headings, or single-sentence UI copy</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Periods for multi-sentence body text and tooltips</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Avoid exclamation marks (except genuine success moments, used sparingly)</li>
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Use Oxford comma in lists</li>
+              </ul>
+            </div>
+
+            {/* Blank value in table */}
+            <div>
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+                Blank value in table
+              </h2>
+              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
+                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Use en dash –</li>
+              </ul>
             </div>
 
           </div>
