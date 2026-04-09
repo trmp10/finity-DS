@@ -1,4 +1,4 @@
-import { Section } from '@/app/_components/doc';
+'use client';
 
 const colorScales = {
   grey: {
@@ -51,7 +51,7 @@ const colorScales = {
   },
   red: {
     label: 'Red / Error',
-    description: 'Red represents an error state and is used for destructive, invalid, or negative scenarios.',
+    description: "Red is considered an error colour and is used for 'destructive,' 'error,' or 'negative' states or actions. For example, it can be used as the button colour for deleting an account.",
     colors: [
       { shade: '50',  value: '#FEF2F2' },
       { shade: '100', value: '#FEE2E2' },
@@ -67,7 +67,7 @@ const colorScales = {
   },
   yellow: {
     label: 'Yellow / Warning',
-    description: 'Yellow is used to represent situations that are potentially destructive or that may need the attention of the user.',
+    description: "Yellow colours can communicate that an action is potentially destructive or \"on-hold\". These colors are commonly used in confirmations to grab the users' attention.",
     colors: [
       { shade: '50',  value: '#FEFCE8' },
       { shade: '100', value: '#FEF9C3' },
@@ -83,7 +83,7 @@ const colorScales = {
   },
   green: {
     label: 'Green / Success',
-    description: 'Applies when there is a positive action, current state, or successful confirmation.',
+    description: 'Success colours communicate a positive action, positive trend, or a successful confirmation.',
     colors: [
       { shade: '50',  value: '#F0FDF4' },
       { shade: '100', value: '#DCFCE7' },
@@ -101,14 +101,14 @@ const colorScales = {
 
 function ColorSwatch({ shade, value }: { shade: string; value: string }) {
   return (
-    <div className="flex flex-col gap-[var(--spacing-8)]">
+    <div className="bg-[var(--color-base-white)] flex flex-col gap-[8px] overflow-hidden rounded-[10px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.14)] w-[160px]">
       <div
-        className="rounded-lg border border-[var(--color-border-subtle)] w-full"
-        style={{ backgroundColor: value, height: '80px' }}
+        className="w-[160px] h-[96px] shrink-0"
+        style={{ backgroundColor: value }}
       />
-      <div className="flex flex-col gap-[var(--spacing-2)]">
-        <span className="text-[13px] font-semibold text-[var(--color-text-default)]">{shade}</span>
-        <span className="text-[12px] text-[var(--color-text-tertiary)]">{value}</span>
+      <div className="flex flex-col gap-[var(--spacing-4)] px-[var(--spacing-8)] w-[160px] h-[64px] justify-center">
+        <span className="text-[14px] font-semibold text-[var(--color-text-default)] tracking-[0.3px] leading-[20px]">{shade}</span>
+        <span className="text-[14px] font-medium text-[var(--color-text-tertiary)] tracking-[0.3px] leading-[20px]">{value}</span>
       </div>
     </div>
   );
@@ -125,27 +125,29 @@ function ColorScale({
   };
 }) {
   return (
-    <div>
-      <h3 className="text-[15px] font-semibold text-[var(--color-text-default)] mb-[var(--spacing-4)]">{scale.label}</h3>
+    <div className="mb-[var(--spacing-48)]">
+      <h3 className="text-[16px] font-semibold text-[var(--color-text-default)] leading-[22px] mb-[var(--spacing-4)]">{scale.label}</h3>
       {scale.description && (
-        <p className="text-[14px] text-[var(--color-text-secondary)] mb-[var(--spacing-16)] leading-relaxed">
+        <p className="text-[16px] text-[var(--color-text-secondary)] mb-[var(--spacing-16)] leading-[24px] max-w-[864px]">
           {scale.description}
         </p>
       )}
-      <div className="grid grid-cols-5 gap-[var(--spacing-12)]">
+      <div className="grid grid-cols-5 gap-x-[var(--spacing-16)] gap-y-[20px] w-fit mt-[20px]">
         {scale.colors.map((color) => (
           <ColorSwatch key={color.shade} shade={color.shade} value={color.value} />
         ))}
       </div>
       {scale.accent && (
-        <div className="mt-[var(--spacing-24)] flex items-center gap-[var(--spacing-16)]">
-          <div
-            className="rounded-lg border border-[var(--color-border-subtle)] shrink-0"
-            style={{ backgroundColor: scale.accent.value, width: '80px', height: '80px' }}
-          />
-          <div className="flex flex-col gap-[var(--spacing-4)]">
-            <span className="text-[13px] font-semibold text-[var(--color-text-default)]">{scale.accent.name}</span>
-            <span className="text-[12px] text-[var(--color-text-tertiary)]">{scale.accent.value}</span>
+        <div className="mt-[var(--spacing-16)]">
+          <div className="bg-[var(--color-base-white)] flex flex-col gap-[8px] overflow-hidden rounded-[10px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.14)] w-[160px]">
+            <div
+              className="w-[160px] h-[96px] shrink-0"
+              style={{ backgroundColor: scale.accent.value }}
+            />
+            <div className="flex flex-col gap-[var(--spacing-4)] px-[var(--spacing-8)] w-[160px] h-[64px] justify-center">
+              <span className="text-[14px] font-semibold text-[var(--color-text-default)] tracking-[0.3px] leading-[20px]">{scale.accent.name}</span>
+              <span className="text-[14px] font-medium text-[var(--color-text-tertiary)] tracking-[0.3px] leading-[20px]">{scale.accent.value}</span>
+            </div>
           </div>
         </div>
       )}
@@ -153,71 +155,275 @@ function ColorScale({
   );
 }
 
-export default function ColorsPage() {
+function ColourGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <main>
+    <section className="mb-[56px]">
+      <h2 className="text-[20px] font-semibold leading-[28px] tracking-[0.2px] text-[var(--color-text-default)]">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
 
-      {/* ─── Hero ──────────────────────────────────────────────── */}
-      <section className="bg-[var(--color-bg-subtle)] px-[var(--spacing-64)] py-[var(--spacing-64)] min-h-[480px] flex items-center">
-        <div className="w-full">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--color-text-tertiary)] mb-[var(--spacing-16)]">
+import React, { useState } from 'react';
+import { Tabs } from '@/components/tabs/Tabs';
+
+const TABS = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'mapping', label: 'Mapping' },
+];
+
+const MAPPING_SECTIONS = [
+  {
+    section: 'color / text',
+    label: 'Typography',
+    nameHeader: 'Name',
+    valueHeader: 'Value',
+    usageHeader: 'Usage',
+    rows: [
+      { name: 'default',        value: 'grey 900',   hex: '#171717', usage: 'Headers • Titles • Values' },
+      { name: 'secondary',      value: 'grey 700',   hex: '#404040', usage: 'Description • Labels'      },
+      { name: 'tertiary',       value: 'grey 500',   hex: '#737373', usage: 'Additional info' },
+      { name: 'sidebar',        value: 'grey 400',   hex: '#A3A3A3', usage: 'Menu header'     },
+      { name: 'contrast',    value: 'white',      hex: '#FFFFFF', usage: ''                 },
+    ],
+  },
+  {
+    section: 'color / text / link',
+    label: 'Link',
+    nameHeader: 'Name',
+    valueHeader: 'Value',
+    rows: [
+      { name: 'default', value: 'coral 400', hex: '#F77445' },
+      { name: 'hover',   value: 'coral 300', hex: '#FAA277' },
+      { name: 'visited', value: 'coral 500', hex: '#F44C1B' },
+    ],
+  },
+  {
+    section: 'color / background / feedback',
+    label: 'Feedback',
+    nameHeader: 'Name',
+    valueHeader: 'Background',
+    borderHeader: 'Border',
+    rows: [
+      { name: 'info',    value: 'grey 600',   hex: '#525252', border: null,      borderHex: null      },
+      { name: 'error',   value: 'red 600',    hex: '#DC2626', border: 'red 600',    borderHex: '#DC2626' },
+      { name: 'success', value: 'green 600',  hex: '#16A34A', border: 'green 600',  borderHex: '#16A34A' },
+      { name: 'warning', value: 'yellow 600', hex: '#CA8A04', border: 'yellow 600', borderHex: '#CA8A04' },
+    ],
+  },
+  {
+    section: 'color / icon',
+    label: 'Icon',
+    nameHeader: 'Name',
+    valueHeader: 'Value',
+    usageHeader: 'Usage',
+    rows: [
+      { name: 'default',  value: 'grey 900',   hex: '#171717', usage: ''     },
+      { name: 'subtle',   value: 'grey 600',   hex: '#525252', usage: ''     },
+      { name: 'sidebar',  value: 'grey 400',   hex: '#A3A3A3', usage: 'Icon' },
+      { name: 'light',    value: 'grey 300',   hex: '#D4D4D4', usage: ''     },
+      { name: 'contrast', value: 'white',      hex: '#FFFFFF', usage: ''     },
+      { name: 'error',    value: 'red 600',    hex: '#DC2626', usage: ''     },
+      { name: 'success',  value: 'green 600',  hex: '#16A34A', usage: ''     },
+      { name: 'warning',  value: 'yellow 600', hex: '#CA8A04', usage: ''     },
+      { name: 'active',   value: 'coral 400',  hex: '#F77445', usage: ''     },
+    ],
+  },
+];
+
+
+function MappingTable() {
+  return (
+    <div className="w-full flex flex-col gap-[var(--spacing-48)]">
+      {MAPPING_SECTIONS.map((group) => (
+        <div key={group.section}>
+          {'label' in group && (
+            <p className="text-[16px] font-semibold text-[var(--color-text-default)] leading-[22px] mb-[var(--spacing-8)]">{group.label}</p>
+          )}
+          {/* Section header */}
+          <div className="flex gap-[var(--spacing-24)] py-[var(--spacing-12)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)] rounded-t-md">
+            <div className="w-[160px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{group.nameHeader}</div>
+            <div className="w-[200px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{'valueHeader' in group ? group.valueHeader : 'Value'}</div>
+            {'borderHeader' in group && (
+              <div className="w-[200px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{group.borderHeader}</div>
+            )}
+            {'usageHeader' in group && (
+              <div className="flex-1 text-[14px] font-semibold text-[var(--color-text-default)]">{group.usageHeader}</div>
+            )}
+          </div>
+          {/* Rows */}
+          {group.rows.map((row) => (
+            <div key={row.name} className="flex gap-[var(--spacing-24)] items-start py-[var(--spacing-16)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)]">
+              <div className="w-[160px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{row.name}</div>
+              <div className="w-[200px] shrink-0 flex items-center gap-[var(--spacing-8)]">
+                <div
+                  className="w-[20px] h-[20px] rounded-[4px] border border-[var(--color-border-subtle)] shrink-0"
+                  style={{ backgroundColor: row.hex }}
+                />
+                <span className="text-[14px] text-[var(--color-text-secondary)]">{row.value}</span>
+              </div>
+              {'usage' in row && (
+                <div className="flex-1">
+                  {row.usage ? (
+                    row.usage.includes(' • ') ? (
+                      <ul className="list-disc list-inside space-y-[2px]">
+                        {row.usage.split(' • ').map((item) => (
+                          <li key={item} className="text-[14px] text-[var(--color-text-secondary)]">{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-[14px] text-[var(--color-text-secondary)]">{row.usage}</span>
+                    )
+                  ) : (
+                    <span className="text-[14px] text-[var(--color-text-tertiary)]">—</span>
+                  )}
+                </div>
+              )}
+              {'border' in row && (
+                <div className="w-[200px] shrink-0 flex items-center gap-[var(--spacing-8)]">
+                  {row.border && row.borderHex ? (
+                    <>
+                      <div
+                        className="w-[20px] h-[20px] rounded-[4px] border border-[var(--color-border-subtle)] shrink-0"
+                        style={{ backgroundColor: row.borderHex }}
+                      />
+                      <span className="text-[14px] text-[var(--color-text-secondary)]">{row.border}</span>
+                    </>
+                  ) : (
+                    <span className="text-[14px] text-[var(--color-text-tertiary)]">—</span>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function ColorsPage() {
+  const [activeTab, setActiveTab] = useState('overview');
+
+  return (
+    <main className="bg-[var(--color-base-white)] min-h-screen">
+
+      {/* ─── Header ───────────────────────────────────────────────── */}
+      <div className="bg-[var(--color-bg-subtle)]">
+        <div className="max-w-[1200px] mx-auto px-[var(--spacing-32)] pt-[var(--spacing-64)] pb-[var(--spacing-64)]">
+
+          {/* Foundation label */}
+          <p className="text-[20px] font-semibold leading-[28px] tracking-[0.3px] text-[var(--color-text-default)] mb-[var(--spacing-48)]">
             Foundation
           </p>
-          <h1 className="text-[5rem] font-semibold leading-[1] tracking-[-0.02em] text-[var(--color-text-default)] mb-[var(--spacing-24)]">
-            Colours
-          </h1>
-          <p className="text-[1.125rem] leading-[1.7] text-[var(--color-text-secondary)] max-w-[560px]">
-            A defined colour palette brings consistency across all Finity products, from backgrounds and
-            text to interactive elements and semantic states.
-          </p>
-        </div>
-      </section>
 
-      {/* ─── Content ───────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-[var(--spacing-64)] py-[var(--spacing-80)]">
-
-        <Section title="Primary colours" description="The main colours that make up the majority of UI designs, applied to backgrounds, buttons, icons, and dividers.">
-          <div className="space-y-[var(--spacing-32)]">
-            <div>
-              <h3 className="text-[15px] font-semibold text-[var(--color-text-default)] mb-[var(--spacing-16)]">Base colour</h3>
-              <div className="flex gap-[var(--spacing-16)]">
-                {[
-                  { label: 'Black', value: '#000000' },
-                  { label: 'White', value: '#FFFFFF' },
-                ].map(({ label, value }) => (
-                  <div key={label} className="flex flex-col gap-[var(--spacing-8)]">
-                    <div
-                      className="rounded-lg border border-[var(--color-border-subtle)]"
-                      style={{ backgroundColor: value, width: '120px', height: '80px' }}
-                    />
-                    <div className="flex flex-col gap-[var(--spacing-4)]">
-                      <span className="text-[13px] font-semibold text-[var(--color-text-default)]">{label}</span>
-                      <span className="text-[12px] text-[var(--color-text-tertiary)]">{value}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Title + metadata row */}
+          <div className="flex items-start justify-between gap-[var(--spacing-64)] mb-[var(--spacing-40)]">
+            <div className="flex flex-col gap-[var(--spacing-16)]">
+              <h1 className="text-[48px] font-semibold leading-[48px] text-[var(--color-text-default)]">
+                Colours
+              </h1>
+              <p className="text-[16px] font-medium leading-[24px] text-[var(--color-text-secondary)] max-w-[680px]">
+                A defined colour palette brings consistency across all Finity products, from backgrounds and text to interactive elements and semantic states.
+              </p>
             </div>
+
+            {/* Metadata */}
+            <div className="shrink-0 w-[280px]">
+              {[
+                { label: 'Created by',      value: 'Toni / Mika' },
+                { label: 'Implemented by',  value: 'Monk' },
+                { label: 'Last updated',    value: '08/04/2026' },
+              ].map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex gap-[var(--spacing-24)] items-center px-[var(--spacing-12)] py-[var(--spacing-8)]${i > 0 ? ' border-t border-[var(--color-grey-300)]' : ''}`}
+                >
+                  <span className="text-[14px] font-semibold text-[var(--color-text-secondary)] tracking-[0.3px] w-[120px] shrink-0 leading-[20px]">
+                    {item.label}
+                  </span>
+                  <span className="text-[14px] font-medium text-[var(--color-text-secondary)] tracking-[0.3px] leading-[20px]">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ─── Tabs ─────────────────────────────────────────────────── */}
+      <div className="max-w-[1200px] mx-auto px-[var(--spacing-32)] pt-[var(--spacing-32)] flex items-end">
+        <Tabs items={TABS} value={activeTab} onChange={setActiveTab} />
+        <div className="flex-1 border-b border-[var(--color-border-subtle)]" />
+      </div>
+
+      {/* ─── Content ──────────────────────────────────────────────── */}
+      {activeTab === 'overview' && (
+      <div className="max-w-[1200px] mx-auto px-[var(--spacing-32)] py-[var(--spacing-64)]">
+
+        <ColourGroup title="Primary colours">
+          <p className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] mt-[var(--spacing-4)] mb-[var(--spacing-16)] max-w-[864px]">
+            The main colours that make up the majority of UI designs, applied to backgrounds, buttons, icons, and dividers.
+          </p>
+          <div className="mt-[var(--spacing-32)] mb-[var(--spacing-32)]">
+            <h3 className="text-[16px] font-semibold text-[var(--color-text-default)] leading-[22px] mb-[var(--spacing-4)]">Base colour</h3>
+            <p className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] mb-[var(--spacing-16)] max-w-[864px]">
+              Black and white are the brand's primary colours and serve as the main colour for most of the interfaces. They are applied consistently across all interactive elements, such as buttons, inputs, and various other components.
+            </p>
+            <div className="flex gap-[var(--spacing-16)] mt-[20px]">
+              {[
+                { label: 'Black', value: '#000000' },
+                { label: 'White', value: '#FFFFFF' },
+              ].map(({ label, value }) => (
+                <div key={label} className="bg-[var(--color-base-white)] flex flex-col gap-[8px] overflow-hidden rounded-[10px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.14)] w-[160px]">
+                  <div
+                    className="w-[160px] h-[96px] shrink-0"
+                    style={{ backgroundColor: value }}
+                  />
+                  <div className="flex flex-col gap-[var(--spacing-4)] px-[var(--spacing-8)] w-[160px] h-[64px] justify-center">
+                    <span className="text-[14px] font-semibold text-[var(--color-text-default)] tracking-[0.3px] leading-[20px]">{label}</span>
+                    <span className="text-[14px] font-medium text-[var(--color-text-tertiary)] tracking-[0.3px] leading-[20px]">{value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-[52px]">
             <ColorScale scale={colorScales.grey} />
           </div>
-        </Section>
+        </ColourGroup>
 
-        <Section title="Accent colours" description="Used to complement primary colours, primarily for interactive elements. Apply sparingly alongside primary colours.">
-          <div className="space-y-[var(--spacing-48)]">
-            <ColorScale scale={colorScales.coral} />
-            <ColorScale scale={colorScales.teal} />
-          </div>
-        </Section>
+        <hr className="border-t border-[var(--color-border-subtle)] mb-[var(--spacing-48)]" />
 
-        <Section title="Semantic colours" description="Communicate status and feedback across the interface." last>
-          <div className="space-y-[var(--spacing-48)]">
-            <ColorScale scale={colorScales.red} />
-            <ColorScale scale={colorScales.yellow} />
-            <ColorScale scale={colorScales.green} />
-          </div>
-        </Section>
+        <ColourGroup title="Accent colours">
+          <p className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] mt-[var(--spacing-4)] mb-[var(--spacing-32)] max-w-[864px]">
+            Accent colours are used to complement the primary colors within the UI, primarily for interactive states, links, and secondary buttons. These colors should be applied sparingly or as accents alongside the primary colors.
+          </p>
+          <ColorScale scale={colorScales.coral} />
+          <ColorScale scale={colorScales.teal} />
+        </ColourGroup>
+
+        <hr className="border-t border-[var(--color-border-subtle)] mb-[var(--spacing-48)]" />
+
+        <ColourGroup title="Semantic colours">
+          <div className="mb-[var(--spacing-32)]" />
+          <ColorScale scale={colorScales.red} />
+          <ColorScale scale={colorScales.yellow} />
+          <ColorScale scale={colorScales.green} />
+        </ColourGroup>
 
       </div>
+      )}
+
+      {activeTab === 'mapping' && (
+        <div className="max-w-[1200px] mx-auto px-[var(--spacing-32)] py-[var(--spacing-64)]">
+          <MappingTable />
+        </div>
+      )}
     </main>
   );
 }
