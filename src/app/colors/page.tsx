@@ -327,7 +327,7 @@ export default function ColorsPage() {
                   Colours
                 </h1>
                 <span className="inline-flex items-center h-[24px] px-[var(--spacing-8)] rounded-[4px] bg-[var(--color-yellow-100)] border border-[var(--color-yellow-800)] text-[14px] font-medium tracking-[0.3px] leading-[20px] text-[var(--color-yellow-800)] whitespace-nowrap">
-                  ENG BETA
+                  Eng beta
                 </span>
               </div>
               <p className="text-[16px] font-medium leading-[24px] text-[var(--color-text-secondary)] max-w-[680px]">
