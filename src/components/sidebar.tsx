@@ -9,26 +9,25 @@ const NAV = [
     items: [
       { href: '/colors', label: 'Colours' },
       { href: '/typography', label: 'Typography' },
-      // { href: '/', label: 'Overview' },
-      // { href: '/spacing', label: 'Spacing' },
-      // { href: '/icons', label: 'Icons' },
+      { href: '/spacing', label: 'Spacing' },
+      { href: '/icons', label: 'Icons' },
     ],
   },
-  // {
-  //   section: 'Components',
-  //   items: [
-  //     { href: '/components/button', label: 'Button' },
-  //     { href: '/components/tabs', label: 'Tabs' },
-  //     { href: '/components/text-field', label: 'Text field' },
-  //     { href: '/components/helper-text', label: 'Helper text' },
-  //     { href: '/components/search-field', label: 'Search field' },
-  //     { href: '/components/text-area', label: 'Text area' },
-  //     { href: '/components/checkbox', label: 'Checkbox' },
-  //     { href: '/components/date-of-birth-field', label: 'Date of birth' },
-  //     { href: '/components/mobile-number-field', label: 'Mobile number' },
-  //     { href: '/components/pin-code-field', label: 'PIN code' },
-  //   ],
-  // },
+  {
+    section: 'Components',
+    items: [
+      { href: '/components/button', label: 'Button' },
+      { href: '/components/tabs', label: 'Tabs' },
+      { href: '/components/text-field', label: 'Text field' },
+      { href: '/components/helper-text', label: 'Helper text' },
+      { href: '/components/search-field', label: 'Search field' },
+      { href: '/components/text-area', label: 'Text area' },
+      { href: '/components/checkbox', label: 'Checkbox' },
+      { href: '/components/date-of-birth-field', label: 'Date of birth' },
+      { href: '/components/mobile-number-field', label: 'Mobile number' },
+      { href: '/components/pin-code-field', label: 'PIN code' },
+    ],
+  },
 ];
 
 export function Sidebar() {
