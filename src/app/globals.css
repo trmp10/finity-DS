@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../../node_modules/@finity/design-system/dist";
 
 :root {
   color-scheme: light;
@@ -315,6 +316,7 @@
 
   /* Font Family */
   --font-sans: var(--font-family-primary);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Heading Extra Large */
   --font-size-heading-xl: var(--font-size-heading-xl);

@@ -33,7 +33,7 @@ export default function SpacingPage() {
           <h1 className="text-[5rem] font-semibold leading-[1] tracking-[-0.02em] text-[var(--color-text-default)] mb-[var(--spacing-24)]">
             Spacing
           </h1>
-          <p className="text-[1.125rem] leading-[1.7] text-[var(--color-text-secondary)] max-w-[560px]">
+          <p className="text-[1rem] leading-[var(--line-height-body)] tracking-[var(--letter-spacing-normal)] text-[var(--color-text-secondary)] max-w-[560px]">
             A consistent spacing scale maintains visual rhythm and hierarchy across all Finity interfaces.
             Use tokens instead of arbitrary values to stay aligned with the system.
           </p>
@@ -41,7 +41,7 @@ export default function SpacingPage() {
       </section>
 
       {/* ─── Content ───────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-[var(--spacing-64)] py-[var(--spacing-80)]">
+      <div className="max-w-5xl mx-auto mx-auto px-[var(--spacing-64)] py-[var(--spacing-80)]">
 
         <Section title="Spacing scale" description="Use these tokens for margins, padding, gaps, and other layout properties.">
           <div className="rounded-xl border border-[var(--color-border-subtle)] overflow-hidden">

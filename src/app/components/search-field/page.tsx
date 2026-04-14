@@ -20,7 +20,7 @@ export default function SearchFieldPage() {
             <h1 className="text-[5rem] font-semibold leading-[1] tracking-[-0.02em] text-[var(--color-text-default)] mb-[var(--spacing-24)]">
               Search field
             </h1>
-            <p className="text-[1.125rem] leading-[1.7] text-[var(--color-text-secondary)] max-w-[440px]">
+            <p className="text-[1rem] leading-[var(--line-height-body)] tracking-[var(--letter-spacing-normal)] text-[var(--color-text-secondary)] max-w-[440px]">
               A single-line input for entering keywords or phrases to find matching content within a system.
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function SearchFieldPage() {
       </section>
 
       {/* ─── Content ───────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-[var(--spacing-64)] py-[var(--spacing-80)]">
+      <div className="max-w-5xl mx-auto mx-auto px-[var(--spacing-64)] py-[var(--spacing-80)]">
 
         <Section title="States" description="The search field has three visual states depending on interaction.">
           <div className="flex flex-col gap-[var(--spacing-32)] max-w-[460px]">

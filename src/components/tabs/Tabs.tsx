@@ -58,7 +58,7 @@ export function Tabs({
         const colorClasses = isDisabled
           ? 'text-[var(--color-text-disabled)] border-transparent cursor-not-allowed'
           : isSelected
-          ? 'text-[var(--color-coral-500)] border-[var(--color-coral-500)]'
+          ? 'text-[var(--color-coral-400)] border-[var(--color-coral-400)]'
           : 'text-[var(--color-text-secondary)] border-transparent hover:text-[var(--color-text-default)]';
 
         return (

@@ -29,34 +29,34 @@ const iconOnlySizeStyles: Record<ButtonSize, string> = {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-[var(--color-grey-900)] text-[var(--color-base-white)]
-    hover:bg-[var(--color-grey-800)]
-    active:bg-[var(--color-base-black)]
-    focus-visible:ring-2 focus-visible:ring-[var(--color-grey-900)] focus-visible:ring-offset-2
+    bg-[var(--color-grey-800)] text-[var(--color-base-white)]
+    hover:bg-[var(--color-base-black)]
+    active:bg-[var(--color-grey-800)]
+    focus-visible:ring-[3px] focus-visible:ring-[var(--color-grey-800)] focus-visible:ring-offset-2
   `,
   secondary: `
-    bg-[var(--color-base-white)] text-[var(--color-grey-900)] border border-[var(--color-grey-300)]
-    hover:bg-[var(--color-grey-50)] hover:border-[var(--color-grey-400)]
+    bg-[var(--color-base-white)] text-[var(--color-grey-900)] border border-[var(--color-grey-400)]
+    hover:bg-[var(--color-grey-50)]
     active:bg-[var(--color-grey-100)]
-    focus-visible:ring-2 focus-visible:ring-[var(--color-grey-400)] focus-visible:ring-offset-2
+    focus-visible:ring-[3px] focus-visible:ring-[var(--color-grey-800)] focus-visible:ring-offset-2
   `,
   tertiary: `
     bg-transparent text-[var(--color-grey-900)]
     hover:bg-[var(--color-grey-100)]
     active:bg-[var(--color-grey-200)]
-    focus-visible:ring-2 focus-visible:ring-[var(--color-grey-400)] focus-visible:ring-offset-2
+    focus-visible:ring-[3px] focus-visible:ring-[var(--color-grey-800)] focus-visible:ring-offset-2
   `,
   emphasis: `
     bg-[var(--color-coral-500)] text-[var(--color-base-white)]
     hover:bg-[var(--color-coral-600)]
     active:bg-[var(--color-coral-700)]
-    focus-visible:ring-2 focus-visible:ring-[var(--color-coral-500)] focus-visible:ring-offset-2
+    focus-visible:ring-[3px] focus-visible:ring-[var(--color-grey-800)] focus-visible:ring-offset-2
   `,
   danger: `
-    bg-[var(--color-red-500)] text-[var(--color-base-white)]
-    hover:bg-[var(--color-red-600)]
-    active:bg-[var(--color-red-700)]
-    focus-visible:ring-2 focus-visible:ring-[var(--color-red-500)] focus-visible:ring-offset-2
+    bg-[var(--color-red-600)] text-[var(--color-base-white)]
+    hover:bg-[var(--color-red-700)]
+    active:bg-[var(--color-red-800)]
+    focus-visible:ring-[3px] focus-visible:ring-[var(--color-grey-800)] focus-visible:ring-offset-2
   `,
 };
 

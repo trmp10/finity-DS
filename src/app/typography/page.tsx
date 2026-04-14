@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@finity/design-system';
+import React, { useState } from 'react';
+import { Button, Check, Close } from '@finity/design-system';
 import { Tabs } from '@/components/tabs/Tabs';
 
 type TypeRow = {
@@ -145,6 +145,38 @@ const ALL_ROWS = [
   { category: 'Small', rows: SMALL },
 ];
 
+function GuidelineTable({ rows }: { rows: { use: React.ReactNode; avoid: React.ReactNode; implemented: React.ReactNode; note?: string }[] }) {
+  return (
+    <div className="w-full">
+      <div className="flex gap-[var(--spacing-16)] py-[var(--spacing-12)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)]">
+        <div className="flex-1 flex items-center gap-[var(--spacing-4)] text-[14px] font-semibold text-[#16A34A]">
+          <Check size={16} color="#16A34A" strokeWidth={2.5} />
+          Use
+        </div>
+        <div className="flex-1 flex items-center gap-[var(--spacing-4)] text-[14px] font-semibold text-[#DC2626]">
+          <Close size={16} color="#DC2626" />
+          Avoid
+        </div>
+        <div className="w-[120px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Implemented</div>
+      </div>
+      {rows.map((row, i) => (
+        <div key={i} className={`flex gap-[var(--spacing-16)] py-[var(--spacing-16)] px-[var(--spacing-8)]${i < rows.length - 1 ? ' border-b border-[var(--color-grey-300)]' : ''}`}>
+          <div className="flex-1 text-[14px] font-medium text-[var(--color-grey-900)] leading-[20px] text-pretty">{row.use}</div>
+          <div className="flex-1">
+            <div className="text-[14px] font-medium text-[var(--color-grey-900)] leading-[20px] text-pretty">{row.avoid}</div>
+            {row.note && <p className="mt-[var(--spacing-4)] text-[14px] font-medium text-[var(--color-grey-700)] leading-[20px] text-pretty">{row.note}</p>}
+          </div>
+          <div className="w-[120px] shrink-0">
+            {row.implemented === 'Yes'
+              ? <Check size={16} color="#16A34A" strokeWidth={2.5} />
+              : <Close size={16} color="#DC2626" />}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function TypeGroup({ title, rows }: { title: string; rows: TypeRow[] }) {
   return (
     <section className="mb-[56px]">
@@ -154,41 +186,43 @@ function TypeGroup({ title, rows }: { title: string; rows: TypeRow[] }) {
       <div className="border-t-[4px] border-[var(--color-grey-300)] mt-[8px] mb-[16px]" />
       <div>
         {rows.map((row, i) => (
-          <div
-            key={row.token}
-            className={`flex items-start gap-[var(--spacing-80)] pt-[var(--spacing-40)] pb-[var(--spacing-40)]${i < rows.length - 1 ? ' border-b border-[var(--color-grey-300)]' : ''}`}
-          >
-            {/* Token + Specs grouped together with tighter gap */}
-            <div className="flex items-start gap-[var(--spacing-64)] shrink-0">
-              {/* Token badge */}
-              <div className="w-[160px] shrink-0 pt-[2px]">
-                <span className="inline-flex items-center px-[var(--spacing-8)] py-[2px] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
-                  {row.tailwind}
-                </span>
+          <React.Fragment key={row.token}>
+            <div className="flex items-start gap-[var(--spacing-80)] py-[var(--spacing-40)]">
+              {/* Token + Specs grouped together with tighter gap */}
+              <div className="flex items-start gap-[var(--spacing-64)] shrink-0">
+                {/* Token badge */}
+                <div className="w-[160px] shrink-0 pt-[2px]">
+                  <span className="inline-flex items-center px-[var(--spacing-8)] py-[2px] rounded-md bg-[var(--color-grey-100)] text-[12px] font-mono text-[var(--color-text-secondary)] whitespace-nowrap">
+                    {row.tailwind}
+                  </span>
+                </div>
+
+                {/* Specs */}
+                <div className="flex gap-[var(--spacing-16)]">
+                  <div className="flex flex-col gap-[4px]">
+                    <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Font size</span>
+                    <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Line height</span>
+                    <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Letter spacing</span>
+                    <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Weight</span>
+                  </div>
+                  <div className="flex flex-col gap-[4px]">
+                    <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.size}</span>
+                    <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.lineHeight}</span>
+                    <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.letterSpacing}</span>
+                    <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.weight}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Specs */}
-              <div className="flex gap-[var(--spacing-16)]">
-                <div className="flex flex-col gap-[4px]">
-                  <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Font size</span>
-                  <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Line height</span>
-                  <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Letter spacing</span>
-                  <span className="text-[14px] font-semibold leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">Weight</span>
-                </div>
-                <div className="flex flex-col gap-[4px]">
-                  <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.size}</span>
-                  <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.lineHeight}</span>
-                  <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.letterSpacing}</span>
-                  <span className="text-[14px] font-medium leading-[25px] text-[var(--color-text-default)] whitespace-nowrap">{row.weight}</span>
-                </div>
+              {/* Preview — stays at its original position via flex-1 */}
+              <div className="flex-1 text-[var(--color-text-default)]" style={row.style}>
+                {row.preview}
               </div>
             </div>
-
-            {/* Preview — stays at its original position via flex-1 */}
-            <div className="flex-1 text-[var(--color-text-default)]" style={row.style}>
-              {row.preview}
-            </div>
-          </div>
+            {i < rows.length - 1 && (
+              <div className="border-t border-[var(--color-grey-300)]" />
+            )}
+          </React.Fragment>
         ))}
       </div>
     </section>
@@ -214,10 +248,10 @@ function MappingTable() {
             <div className="w-[100px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">
               {i === 0 ? category : ''}
             </div>
-            <div className="w-[48px] shrink-0 text-[14px] text-[var(--color-text-default)]">
+            <div className="w-[48px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
               {row.size.split('  /  ')[0].replace(/(\d+)(px)/, '$1 $2')}
             </div>
-            <div className="w-[56px] shrink-0 text-[14px] text-[var(--color-text-default)]">
+            <div className="w-[56px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
               {row.size.split('  /  ')[1].replace(/([0-9.]+)(rem)/, '$1 $2')}
             </div>
             <div className="w-[175px] shrink-0">
@@ -225,10 +259,10 @@ function MappingTable() {
                 {row.tailwind}
               </span>
             </div>
-            <div className="w-[100px] shrink-0 text-[14px] text-[var(--color-text-default)]">
+            <div className="w-[100px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
               {row.weight} / {row.weight === 'Semibold' ? '600' : row.weight === 'Medium' ? '500' : '400'}
             </div>
-            <ul className="flex-1 list-disc list-inside text-[14px] text-[var(--color-text-secondary)] leading-[1.5] space-y-[var(--spacing-4)]">
+            <ul className="flex-1 list-disc list-inside text-[14px] font-medium text-[var(--color-text-secondary)] leading-[1.5] space-y-[var(--spacing-4)]">
               {row.usage.split(' · ').map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -347,50 +381,48 @@ export default function TypographyPage() {
 
             {/* Case */}
             <div>
-              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">
                 Case
               </h2>
-              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Sentence case for almost everything (UI labels, headings, body, error messages)</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Title case reserved for proper nouns, product names, and sometimes primary navigation</li>
-              </ul>
+              <GuidelineTable rows={[
+                { use: 'Sentence case', avoid: 'Title case', note: 'Title case for proper nouns, product names, and sometimes primary navigation', implemented: 'Yes' },
+              ]} />
+
             </div>
 
             {/* Truncation */}
             <div>
-              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">
                 Truncation
               </h2>
-              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Truncate when a string exceeds the available container width — as a rule of thumb, trigger truncation at ~20–25 characters for table cells, ~30–40 for wider contexts</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Always show at least 8–10 characters before truncating so the string is still identifiable</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Middle truncation for file paths or identifiers where the end matters (e.g. <code className="font-mono text-[14px] bg-[var(--color-grey-100)] px-[4px] py-[1px] rounded-[4px]">invoice_2024_…Q4.pdf</code>)</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Always provide a tooltip or expanded view to reveal the full string</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Never truncate error messages or critical information</li>
-              </ul>
+              <GuidelineTable rows={[
+                { use: <ul className="list-disc list-outside pl-[var(--spacing-16)] flex flex-col gap-[var(--spacing-4)]"><li>~20–25 chars for table cells</li><li>~30–40 for wider contexts</li></ul>, avoid: 'Truncating at inconsistent or arbitrary lengths', implemented: 'No' },
+                { use: 'Show 8–10 chars minimum before truncating', avoid: 'Cutting off so early the string is unidentifiable', implemented: 'No' },
+                { use: <>Middle truncation for file paths (e.g. <code className="font-mono text-[13px] bg-[var(--color-grey-100)] px-[4px] py-[1px] rounded-[4px]">invoice_2024_…Q4.pdf</code>)</>, avoid: 'End-only truncation where the suffix matters', implemented: 'No' },
+                { use: 'Provide a tooltip to reveal the full string', avoid: 'Hiding the full string with no way to access it', implemented: 'No' },
+                { use: '—', avoid: 'Truncating error messages or critical information', implemented: 'No' },
+              ]} />
             </div>
 
             {/* Punctuation */}
             <div>
-              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">
                 Punctuation
               </h2>
-              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">No period at the end of labels, headings, or single-sentence UI copy</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Periods for multi-sentence body text and tooltips</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Avoid exclamation marks (except genuine success moments, used sparingly)</li>
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Use Oxford comma in lists</li>
-              </ul>
+              <GuidelineTable rows={[
+                { use: 'No period for labels, headings, single-sentence copy', avoid: 'Period at the end of labels or headings', implemented: 'No' },
+                { use: 'Period for multi-sentence body and tooltips', avoid: 'Omitting periods in multi-sentence paragraphs', implemented: 'No' },
+              ]} />
             </div>
 
             {/* Blank value in table */}
             <div>
-              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-4)]">
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">
                 Blank value in table
               </h2>
-              <ul className="mt-[var(--spacing-8)] list-disc list-outside pl-[var(--spacing-20)] flex flex-col gap-[var(--spacing-8)] max-w-[520px]">
-                <li className="text-[16px] text-[var(--color-text-secondary)] leading-[24px] text-pretty">Use en dash –</li>
-              </ul>
+              <GuidelineTable rows={[
+                { use: '— (Em dash)', avoid: <ul className="list-disc list-outside pl-[var(--spacing-16)] flex flex-col gap-[var(--spacing-4)]"><li>- (Regular dash)</li><li>– (En dash)</li></ul>, implemented: 'No' },
+              ]} />
             </div>
 
           </div>

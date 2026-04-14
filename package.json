@@ -29,7 +29,7 @@
     "react-dom": ">=18"
   },
   "dependencies": {
-    "@finity/design-system": "file:./packages/finity-design-system-0.1.0.tgz",
+    "@finity/design-system": "file:../finity-design-system",
     "@types/papaparse": "^5.5.2",
     "next": "16.1.6",
     "papaparse": "^5.5.3",

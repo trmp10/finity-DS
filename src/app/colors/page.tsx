@@ -167,6 +167,7 @@ function ColourGroup({ title, children }: { title: string; children: React.React
 }
 
 import React, { useState } from 'react';
+import { Check, Close } from '@finity/design-system';
 import { Tabs } from '@/components/tabs/Tabs';
 
 const TABS = [
@@ -182,11 +183,11 @@ const MAPPING_SECTIONS = [
     valueHeader: 'Value',
     usageHeader: 'Usage',
     rows: [
-      { name: 'default',        value: 'grey 900',   hex: '#171717', usage: 'Header • Title • Value' },
-      { name: 'secondary',      value: 'grey 700',   hex: '#404040', usage: 'Description • Label'      },
-      { name: 'tertiary',       value: 'grey 500',   hex: '#737373', usage: 'Additional info' },
-      { name: 'sidebar',        value: 'grey 400',   hex: '#A3A3A3', usage: 'Menu header'     },
-      { name: 'contrast',    value: 'white',      hex: '#FFFFFF', usage: ''                 },
+      { name: 'default',   value: 'grey 900', hex: '#171717', usage: 'Header • Title • Value', implemented: 'No'  },
+      { name: 'secondary', value: 'grey 700', hex: '#404040', usage: 'Description • Label',     implemented: 'No'  },
+      { name: 'tertiary',  value: 'grey 500', hex: '#737373', usage: 'Additional info',          implemented: 'No'  },
+      { name: 'sidebar',   value: 'grey 400', hex: '#A3A3A3', usage: 'Menu header',              implemented: 'Yes' },
+      { name: 'contrast',  value: 'white',    hex: '#FFFFFF', usage: 'Used as a contrast to dark backgrounds', implemented: 'Yes' },
     ],
   },
   {
@@ -195,9 +196,9 @@ const MAPPING_SECTIONS = [
     nameHeader: 'Name',
     valueHeader: 'Value',
     rows: [
-      { name: 'default', value: 'coral 400', hex: '#F77445' },
-      { name: 'hover',   value: 'coral 300', hex: '#FAA277' },
-      { name: 'visited', value: 'coral 500', hex: '#F44C1B' },
+      { name: 'default', value: 'coral 400', hex: '#F77445', implemented: 'No' },
+      { name: 'hover',   value: 'coral 300', hex: '#FAA277', implemented: 'No' },
+      { name: 'visited', value: 'coral 500', hex: '#F44C1B', implemented: 'No' },
     ],
   },
   {
@@ -207,10 +208,10 @@ const MAPPING_SECTIONS = [
     valueHeader: 'Background',
     borderHeader: 'Border',
     rows: [
-      { name: 'info',    value: 'grey 600',   hex: '#525252', border: null,      borderHex: null      },
-      { name: 'error',   value: 'red 600',    hex: '#DC2626', border: 'red 600',    borderHex: '#DC2626' },
-      { name: 'success', value: 'green 600',  hex: '#16A34A', border: 'green 600',  borderHex: '#16A34A' },
-      { name: 'warning', value: 'yellow 600', hex: '#CA8A04', border: 'yellow 600', borderHex: '#CA8A04' },
+      { name: 'info',    value: 'grey 600',   hex: '#525252', border: null,         borderHex: null,      implemented: 'Yes' },
+      { name: 'error',   value: 'red 600',    hex: '#DC2626', border: 'red 600',    borderHex: '#DC2626', implemented: 'Yes' },
+      { name: 'success', value: 'green 600',  hex: '#16A34A', border: 'green 600',  borderHex: '#16A34A', implemented: 'Yes' },
+      { name: 'warning', value: 'yellow 600', hex: '#CA8A04', border: 'yellow 600', borderHex: '#CA8A04', implemented: 'Yes' },
     ],
   },
   {
@@ -220,15 +221,15 @@ const MAPPING_SECTIONS = [
     valueHeader: 'Value',
     usageHeader: 'Usage',
     rows: [
-      { name: 'default',  value: 'grey 900',   hex: '#171717', usage: ''     },
-      { name: 'subtle',   value: 'grey 600',   hex: '#525252', usage: ''     },
-      { name: 'sidebar',  value: 'grey 400',   hex: '#A3A3A3', usage: 'Icon' },
-      { name: 'light',    value: 'grey 300',   hex: '#D4D4D4', usage: ''     },
-      { name: 'contrast', value: 'white',      hex: '#FFFFFF', usage: ''     },
-      { name: 'error',    value: 'red 600',    hex: '#DC2626', usage: ''     },
-      { name: 'success',  value: 'green 600',  hex: '#16A34A', usage: ''     },
-      { name: 'warning',  value: 'yellow 600', hex: '#CA8A04', usage: ''     },
-      { name: 'active',   value: 'coral 400',  hex: '#F77445', usage: ''     },
+      { name: 'default',  value: 'grey 900',   hex: '#171717', usage: '—',    implemented: 'Yes' },
+      { name: 'subtle',   value: 'grey 600',   hex: '#525252', usage: '—',    implemented: 'Yes' },
+      { name: 'sidebar',  value: 'grey 400',   hex: '#A3A3A3', usage: 'Icon', implemented: 'Yes' },
+      { name: 'light',    value: 'grey 300',   hex: '#D4D4D4', usage: '—',    implemented: 'Yes' },
+      { name: 'contrast', value: 'white',      hex: '#FFFFFF', usage: 'Used as a contrast to dark backgrounds', implemented: 'Yes' },
+      { name: 'error',    value: 'red 600',    hex: '#DC2626', usage: '—',    implemented: 'Yes' },
+      { name: 'success',  value: 'green 600',  hex: '#16A34A', usage: '—',    implemented: 'Yes' },
+      { name: 'warning',  value: 'yellow 600', hex: '#CA8A04', usage: '—',    implemented: 'Yes' },
+      { name: 'active',   value: 'coral 400',  hex: '#F77445', usage: '—',    implemented: 'Yes' },
     ],
   },
 ];
@@ -243,15 +244,18 @@ function MappingTable() {
             <p className="text-[16px] font-semibold text-[var(--color-text-default)] leading-[22px] mb-[var(--spacing-8)]">{group.label}</p>
           )}
           {/* Section header */}
-          <div className="flex gap-[var(--spacing-24)] py-[var(--spacing-12)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)] rounded-t-md">
+          <div className="flex gap-[var(--spacing-24)] py-[var(--spacing-12)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)]">
             <div className="w-[160px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{group.nameHeader}</div>
             <div className="w-[200px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{'valueHeader' in group ? group.valueHeader : 'Value'}</div>
             {'borderHeader' in group && (
               <div className="w-[200px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">{group.borderHeader}</div>
             )}
-            {'usageHeader' in group && (
+            {'usageHeader' in group ? (
               <div className="flex-1 text-[14px] font-semibold text-[var(--color-text-default)]">{group.usageHeader}</div>
+            ) : (
+              <div className="flex-1" />
             )}
+            <div className="w-[120px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Implemented</div>
           </div>
           {/* Rows */}
           {group.rows.map((row) => (
@@ -262,25 +266,8 @@ function MappingTable() {
                   className="w-[20px] h-[20px] rounded-[4px] border border-[var(--color-border-subtle)] shrink-0"
                   style={{ backgroundColor: row.hex }}
                 />
-                <span className="text-[14px] text-[var(--color-text-secondary)]">{row.value}</span>
+                <span className="text-[14px] font-medium text-[var(--color-text-secondary)]">{row.value}</span>
               </div>
-              {'usage' in row && (
-                <div className="flex-1">
-                  {row.usage ? (
-                    row.usage.includes(' • ') ? (
-                      <ul className="list-disc list-inside space-y-[2px]">
-                        {row.usage.split(' • ').map((item) => (
-                          <li key={item} className="text-[14px] text-[var(--color-text-secondary)]">{item}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <span className="text-[14px] text-[var(--color-text-secondary)]">{row.usage}</span>
-                    )
-                  ) : (
-                    <span className="text-[14px] text-[var(--color-text-tertiary)]">—</span>
-                  )}
-                </div>
-              )}
               {'border' in row && (
                 <div className="w-[200px] shrink-0 flex items-center gap-[var(--spacing-8)]">
                   {row.border && row.borderHex ? (
@@ -289,11 +276,37 @@ function MappingTable() {
                         className="w-[20px] h-[20px] rounded-[4px] border border-[var(--color-border-subtle)] shrink-0"
                         style={{ backgroundColor: row.borderHex }}
                       />
-                      <span className="text-[14px] text-[var(--color-text-secondary)]">{row.border}</span>
+                      <span className="text-[14px] font-medium text-[var(--color-text-secondary)]">{row.border}</span>
                     </>
                   ) : (
-                    <span className="text-[14px] text-[var(--color-text-tertiary)]">—</span>
+                    <span className="text-[14px] font-medium text-[var(--color-text-tertiary)]">—</span>
                   )}
+                </div>
+              )}
+              {'usage' in row ? (
+                <div className="flex-1">
+                  {row.usage ? (
+                    row.usage.includes(' • ') ? (
+                      <ul className="list-disc list-inside space-y-[2px]">
+                        {row.usage.split(' • ').map((item) => (
+                          <li key={item} className="text-[14px] font-medium text-[var(--color-text-secondary)]">{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-[14px] font-medium text-[var(--color-text-secondary)]">{row.usage}</span>
+                    )
+                  ) : (
+                    <span className="text-[14px] font-medium text-[var(--color-text-tertiary)]">—</span>
+                  )}
+                </div>
+              ) : (
+                <div className="flex-1" />
+              )}
+              {'implemented' in row && (
+                <div className="w-[120px] shrink-0">
+                  {row.implemented === 'Yes'
+                    ? <Check size={16} color="#16A34A" strokeWidth={2.5} />
+                    : <Close size={16} color="#DC2626" />}
                 </div>
               )}
             </div>
