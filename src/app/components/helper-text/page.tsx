@@ -51,7 +51,7 @@ const VARIANT_SPECS: { type: HelperTextType; icon: string; hex: string; color: s
 ];
 
 function GuidelineTable({ rows }: {
-  rows: { use: React.ReactNode; avoid: React.ReactNode; note?: string; implemented: 'No' | 'No' | 'Review' }[];
+  rows: { use: React.ReactNode; avoid: React.ReactNode; note?: string; implemented: 'Yes' | 'No' | 'Review' }[];
 }) {
   return (
     <div className="w-full">
