@@ -236,7 +236,7 @@ function MappingTable() {
       <div className="flex gap-[var(--spacing-48)] py-[var(--spacing-12)] px-[var(--spacing-8)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)]">
         <div className="w-[100px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Category</div>
         <div className="w-[48px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">PX</div>
-        <div className="w-[56px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Rem</div>
+        <div className="w-[72px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Rem</div>
         <div className="w-[175px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Tailwind / Figma token</div>
         <div className="w-[100px] shrink-0 text-[14px] font-semibold text-[var(--color-text-default)]">Weight</div>
         <div className="flex-1 text-[14px] font-semibold text-[var(--color-text-default)]">Usage</div>
@@ -251,7 +251,7 @@ function MappingTable() {
             <div className="w-[48px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
               {row.size.split('  /  ')[0].replace(/(\d+)(px)/, '$1 $2')}
             </div>
-            <div className="w-[56px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
+            <div className="w-[72px] shrink-0 text-[14px] font-medium text-[var(--color-text-default)]">
               {row.size.split('  /  ')[1].replace(/([0-9.]+)(rem)/, '$1 $2')}
             </div>
             <div className="w-[175px] shrink-0">
