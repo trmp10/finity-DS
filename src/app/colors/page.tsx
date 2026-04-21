@@ -232,6 +232,31 @@ const MAPPING_SECTIONS = [
       { name: 'active',   value: 'coral 400',  hex: '#F77445', usage: '—',    implemented: 'Yes' },
     ],
   },
+  {
+    section: 'color / border',
+    label: 'Border',
+    nameHeader: 'Name',
+    valueHeader: 'Value',
+    usageHeader: 'Usage',
+    rows: [
+      { name: 'subtle',  value: 'grey 300', hex: '#D4D4D4', usage: 'Dividers · Table borders · Subtle outlines', implemented: 'Yes' },
+      { name: 'default', value: 'grey 400', hex: '#A3A3A3', usage: 'Input borders (default state)',               implemented: 'Yes' },
+      { name: 'strong',  value: 'grey 500', hex: '#737373', usage: 'Stronger emphasis borders',                   implemented: 'Yes' },
+    ],
+  },
+  {
+    section: 'color / background',
+    label: 'Background',
+    nameHeader: 'Name',
+    valueHeader: 'Value',
+    usageHeader: 'Usage',
+    rows: [
+      { name: 'default', value: 'white',    hex: '#FFFFFF', usage: 'Page and card backgrounds',               implemented: 'Yes' },
+      { name: 'subtle',  value: 'grey 50',  hex: '#FAFAFA', usage: 'Section backgrounds · Preview areas',    implemented: 'Yes' },
+      { name: 'muted',   value: 'grey 100', hex: '#F5F5F5', usage: 'Input prefix/suffix · Read-only fields', implemented: 'Yes' },
+      { name: 'neutral', value: 'grey 200', hex: '#E5E5E5', usage: 'Disabled input backgrounds',             implemented: 'Yes' },
+    ],
+  },
 ];
 
 

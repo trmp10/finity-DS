@@ -203,7 +203,7 @@ export default function FrequencyBadgePage() {
               <DemoTable
                 rowHeader="Type"
                 cols={[
-                  { key: 'badge', label: 'Badge',   className: 'w-[180px]' },
+                  { key: 'badge', label: 'Preview', className: 'w-[180px]' },
                   { key: 'usage', label: 'Usage' },
                 ]}
                 rows={TYPES.map(type => ({

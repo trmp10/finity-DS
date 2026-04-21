@@ -1,33 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { type HelperTextType, Check, Close } from '@finity/design-system';
+import { type HelperTextType, HelperText, TextField, Check, Close } from '@finity/design-system';
 import { InfoFilled } from '@/components/icons/feedback';
 import { Tabs } from '@/components/tabs/Tabs';
 import { Section, DemoTable } from '@/app/_components/doc';
-
-const ICON_INFO    = 'https://www.figma.com/api/mcp/asset/4ae80c30-d63e-4933-b59c-c695f78570f4';
-const ICON_ERROR   = 'https://www.figma.com/api/mcp/asset/6ea5d07b-ac17-4b51-9818-714537eb80f3';
-const ICON_SUCCESS = 'https://www.figma.com/api/mcp/asset/7f2dc17c-2416-418e-935f-9af2bee4b816';
-const ICON_WARNING = 'https://www.figma.com/api/mcp/asset/7dd676c8-33be-4e38-9aa4-a9edc7cc2763';
-
-// Insets match Figma exactly: info/error/success use 4.17%, warning has asymmetric inset
-const ICON_INSET: Record<HelperTextType, string> = {
-  default: '4.17%',
-  error:   '4.17%',
-  success: '4.17%',
-  warning: '12.5% 5.1% 8.36% 5.13%',
-};
-
-function FigmaIcon({ src, inset }: { src: string; inset: string }) {
-  return (
-    <div className="shrink-0 mt-[2px] relative size-[16px]">
-      <div className="absolute" style={{ inset }}>
-        <img alt="" className="absolute inset-0 size-full" src={src} />
-      </div>
-    </div>
-  );
-}
 
 const TYPE_LABEL: Record<HelperTextType, string> = {
   default: 'Neutral',
@@ -43,11 +20,11 @@ const USAGE: Record<HelperTextType, string> = {
   warning: 'Non-blocking caution that does not prevent submission',
 };
 
-const VARIANT_SPECS: { type: HelperTextType; icon: string; hex: string; color: string }[] = [
-  { type: 'default', icon: ICON_INFO,    hex: '#525252', color: 'grey-600'   },
-  { type: 'error',   icon: ICON_ERROR,   hex: '#DC2626', color: 'red-600'    },
-  { type: 'success', icon: ICON_SUCCESS, hex: '#16A34A', color: 'green-600'  },
-  { type: 'warning', icon: ICON_WARNING, hex: '#CA8A04', color: 'yellow-600' },
+const VARIANT_SPECS: { type: HelperTextType; color: string }[] = [
+  { type: 'default', color: 'grey-600'   },
+  { type: 'error',   color: 'red-600'    },
+  { type: 'success', color: 'green-600'  },
+  { type: 'warning', color: 'yellow-600' },
 ];
 
 function GuidelineTable({ rows }: {
@@ -161,30 +138,23 @@ export default function HelperTextPage() {
         {/* ── Overview ── */}
         {tab === 'overview' && (
           <>
-            {/* Demo preview — in-context */}
+            {/* Demo preview */}
             <div className="mb-[var(--spacing-96)]">
               <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex flex-col items-center justify-center gap-[var(--spacing-24)]">
 
-                {/* Mock field with error */}
                 <div className="w-full max-w-[450px] flex flex-col gap-[var(--spacing-4)]">
-                  <span className="text-[16px] font-medium text-[var(--color-text-secondary)] tracking-[0.35px] leading-[22px]">
-                    Email address
-                  </span>
-                  <div className="h-[48px] rounded-[8px]" style={{ border: '3px solid var(--color-red-600)', backgroundColor: 'white' }} />
-                  <div className="flex items-start gap-[var(--spacing-4)]">
-                    <FigmaIcon src={ICON_ERROR} inset={ICON_INSET.error} />
-                    <span className="text-[14px] font-medium leading-[20px] tracking-[0.3px] text-[#DC2626]">
-                      This field is required
-                    </span>
+                  <div className="pointer-events-none">
+                    <TextField
+                      tabIndex={-1}
+                      label="Email address"
+                      className="[&>div:first-of-type]:[box-shadow:0_0_0_2px_var(--color-red-600)]"
+                    />
                   </div>
+                  <HelperText type="error">This field is required</HelperText>
                 </div>
 
-                {/* Standalone default helper text */}
-                <div className="w-full max-w-[450px] flex items-start gap-[var(--spacing-4)]">
-                  <FigmaIcon src={ICON_INFO} inset={ICON_INSET.default} />
-                  <span className="text-[14px] font-medium leading-[20px] tracking-[0.3px] text-[#525252]">
-                    This setting controls whether the employee appears in reports
-                  </span>
+                <div className="w-full max-w-[450px]">
+                  <HelperText type="default">This setting controls whether the employee appears in reports</HelperText>
                 </div>
 
               </div>
@@ -193,20 +163,15 @@ export default function HelperTextPage() {
             {/* Variants */}
             <Section title="Variants" compact last>
               <DemoTable
-                rowHeader=""
+                rowHeader="Type"
                 cols={[
-                  { key: 'type',  label: 'Type',  className: 'w-[180px]' },
+                  { key: 'type',  label: 'Preview',  className: 'w-[180px]' },
                   { key: 'usage', label: 'Usage' },
                 ]}
-                rows={VARIANT_SPECS.map(({ type, icon, hex }) => ({
+                rows={VARIANT_SPECS.map(({ type }) => ({
                   label: TYPE_LABEL[type],
                   cells: [
-                    <div key={type} className="flex items-start gap-[var(--spacing-4)]">
-                      <FigmaIcon src={icon} inset={ICON_INSET[type]} />
-                      <span className="text-[14px] font-medium leading-[20px] tracking-[0.3px]" style={{ color: hex }}>
-                        Helper text
-                      </span>
-                    </div>,
+                    <HelperText key={type} type={type}>Helper text</HelperText>,
                     <span key={`${type}-u`} className="text-[14px] font-medium text-[var(--color-grey-900)]">{USAGE[type]}</span>,
                   ],
                 }))}
@@ -250,11 +215,8 @@ export default function HelperTextPage() {
                 </div>
                 {VARIANT_SPECS.map((row, i) => (
                   <div key={row.type} className={`flex gap-[var(--spacing-24)] items-center py-[var(--spacing-16)] px-[var(--spacing-16)]${i < VARIANT_SPECS.length - 1 ? ' border-b border-[var(--color-grey-300)]' : ''}`}>
-                    <div className="w-[200px] shrink-0 flex items-start gap-[var(--spacing-4)]">
-                      <FigmaIcon src={row.icon} inset={ICON_INSET[row.type]} />
-                      <span className="text-[14px] font-medium leading-[20px] tracking-[0.3px]" style={{ color: row.hex }}>
-                        Helper text
-                      </span>
+                    <div className="w-[200px] shrink-0">
+                      <HelperText type={row.type}>Helper text</HelperText>
                     </div>
                     <div className="flex-1 text-[14px] font-medium text-[var(--color-grey-900)]">{row.color}</div>
                   </div>

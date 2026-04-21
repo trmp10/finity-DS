@@ -129,17 +129,17 @@ export default function ButtonPage() {
             {/* Preview */}
             <div className="mb-[var(--spacing-96)]">
               <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center gap-[var(--spacing-8)]">
-                <Button variant="primary" size="medium">Process payroll</Button>
                 <Button variant="secondary" size="medium">Add employee</Button>
+                <Button variant="primary" size="medium">Process payroll</Button>
               </div>
             </div>
 
             {/* Variants */}
             <Section title="Variants" compact>
               <DemoTable
-                rowHeader="Hierarchy"
+                rowHeader="Type"
                 cols={[
-                  { key: 'variant',    label: 'Variant',        className: 'w-[140px]' },
+                  { key: 'variant',    label: 'Preview',        className: 'w-[140px]' },
                   { key: 'emphasis',   label: 'Emphasis',       className: 'w-[100px]' },
                   { key: 'perContext', label: '# per context',  className: 'w-[120px]' },
                   { key: 'usage',      label: 'Usage' },
@@ -156,9 +156,9 @@ export default function ButtonPage() {
             {/* Danger */}
             <Section title="Danger" compact>
               <DemoTable
-                rowHeader="Hierarchy"
+                rowHeader="Type"
                 cols={[
-                  { key: 'variant',    label: 'Variant',        className: 'w-[140px]' },
+                  { key: 'variant',    label: 'Preview',        className: 'w-[140px]' },
                   { key: 'emphasis',   label: 'Emphasis',       className: 'w-[100px]' },
                   { key: 'perContext', label: '# per context',  className: 'w-[120px]' },
                   { key: 'usage',      label: 'Usage' },
@@ -174,8 +174,9 @@ export default function ButtonPage() {
             {/* Others */}
             <div className="mb-[var(--spacing-80)]">
               <DemoTable
+                rowHeader="Type"
                 cols={[
-                  { key: 'variant',    label: 'Variant',        className: 'w-[140px]' },
+                  { key: 'variant',    label: 'Preview',        className: 'w-[140px]' },
                   { key: 'emphasis',   label: 'Emphasis',       className: 'w-[100px]' },
                   { key: 'perContext', label: '# per context',  className: 'w-[120px]' },
                   { key: 'usage',      label: 'Usage' },
@@ -432,7 +433,7 @@ export default function ButtonPage() {
                                   {state.token.split('|').map((pair, pi) => (
                     <React.Fragment key={pi}>
                       {pair.trim().split(': ').map((line, idx) => (
-                        <span key={idx} className={`${pi > 0 && idx === 0 ? 'mt-[var(--spacing-8)]' : ''} ${idx === 0 ? 'font-semibold text-[var(--color-grey-900)]' : 'text-[#171717]'}`}>{idx === 0 ? `${line}:` : line}</span>
+                        <span key={idx} className={`${pi > 0 && idx === 0 ? 'mt-[var(--spacing-8)]' : ''} ${idx === 0 ? 'font-semibold text-[var(--color-grey-500)]' : 'text-[var(--color-grey-500)]'}`}>{idx === 0 ? `${line}:` : line}</span>
                       ))}
                     </React.Fragment>
                   ))}

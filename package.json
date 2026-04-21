@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "build:lib": "tsup src/index.ts --format cjs,esm --dts --external react react-dom",
     "start": "next start",

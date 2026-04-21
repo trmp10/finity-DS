@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source "../../node_modules/@finity/design-system/dist";
+@source "../../node_modules/@finity/design-system/src";
 
 :root {
   color-scheme: light;
@@ -480,4 +480,42 @@ h4 { font-size: var(--font-size-heading-sm); line-height: var(--line-height-head
   line-height: var(--line-height-small);
   letter-spacing: var(--letter-spacing-wide);
   font-weight: var(--font-weight-semibold);
+}
+
+/* ========================================
+   Size-only utility classes
+   No font-weight — safe for DS components
+   that set weight and colour separately.
+   Use these instead of text-[var(--font-size-*)]
+   to avoid Tailwind v4 colour/size ambiguity.
+   ======================================== */
+
+.text-size-heading-md {
+  font-size: var(--font-size-heading-md);
+  line-height: var(--line-height-heading-md);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.text-size-heading-sm {
+  font-size: var(--font-size-heading-sm);
+  line-height: var(--line-height-heading-sm);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.text-size-body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.text-size-compact {
+  font-size: var(--font-size-compact);
+  line-height: var(--line-height-compact);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.text-size-small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-wide);
 }

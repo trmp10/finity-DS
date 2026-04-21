@@ -16,18 +16,21 @@ const NAV = [
   {
     section: 'Components',
     items: [
-      { href: '/components/button',         label: 'Button'          },
-      { href: '/components/frequency-badge', label: 'Frequency badge'  },
-      { href: '/components/helper-text',     label: 'Helper text'      },
-      { href: '/components/status-badge',    label: 'Status badge'     },
+      { href: '/components/button',               label: 'Button'          },
+      { href: '/components/checkbox',             label: 'Checkbox'        },
+      { href: '/components/date-of-birth-field', label: 'Date of birth'   },
+      { href: '/components/frequency-badge',      label: 'Frequency badge' },
+      { href: '/components/helper-text',          label: 'Helper text'     },
+      { href: '/components/link',                 label: 'Link'            },
+      { href: '/components/mobile-number-field',  label: 'Mobile number'   },
+      { href: '/components/pin-code-field',       label: 'PIN code'        },
+      { href: '/components/radio-button',         label: 'Radio group'     },
+      { href: '/components/search-field',         label: 'Search field'    },
+      // { href: '/components/select',               label: 'Select'          },
+      { href: '/components/status-badge',           label: 'Status badge'    },
+      { href: '/components/text-area',             label: 'Text area'       },
+      { href: '/components/text-field',            label: 'Text field'      },
       // { href: '/components/tabs', label: 'Tabs' },
-      // { href: '/components/text-field', label: 'Text field' },
-      // { href: '/components/search-field', label: 'Search field' },
-      // { href: '/components/text-area', label: 'Text area' },
-      // { href: '/components/checkbox', label: 'Checkbox' },
-      // { href: '/components/date-of-birth-field', label: 'Date of birth' },
-      // { href: '/components/mobile-number-field', label: 'Mobile number' },
-      // { href: '/components/pin-code-field', label: 'PIN code' },
     ],
   },
 ];
@@ -39,7 +42,7 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 h-screen w-[240px] bg-[var(--color-grey-900)] flex flex-col overflow-y-auto">
       {/* Header */}
       <div className="flex items-center h-[72px] pl-[20px] shrink-0">
-        <span className="text-white text-[18px] font-semibold tracking-[0.2px] leading-[24px]">
+        <span className="text-white text-size-heading-sm font-semibold">
           Finity Design System
         </span>
       </div>
@@ -49,7 +52,7 @@ export function Sidebar() {
         {NAV.map(({ section, items }) => (
           <div key={section} className="flex flex-col">
             <div className="flex items-center h-[32px] px-[var(--spacing-8)]">
-              <span className="text-[12px] font-semibold uppercase tracking-[var(--letter-spacing-wide)] leading-[var(--line-height-small)] text-[var(--color-grey-400)]">
+              <span className="text-size-small font-semibold uppercase text-[var(--color-grey-400)]">
                 {section}
               </span>
             </div>
@@ -62,7 +65,7 @@ export function Sidebar() {
                     href={href}
                     className={`
                       flex items-center h-[40px] px-[var(--spacing-8)] rounded-lg
-                      text-[14px] tracking-[var(--letter-spacing-wide)] leading-[var(--line-height-compact)]
+                      text-size-compact
                       transition-colors duration-100
                       hover:bg-white/5
                       ${isActive

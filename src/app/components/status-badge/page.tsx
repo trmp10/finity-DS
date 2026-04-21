@@ -124,6 +124,7 @@ export default function StatusBadgePage() {
             { id: 'overview',   label: 'Overview'   },
             { id: 'guidelines', label: 'Guidelines' },
             { id: 'specs',      label: 'Specs'      },
+            { id: 'reference',  label: 'Reference'  },
           ]}
           value={tab}
           onChange={setTab}
@@ -178,7 +179,7 @@ export default function StatusBadgePage() {
               <DemoTable
                 rowHeader="Type"
                 cols={[
-                  { key: 'badge', label: 'Badge',   className: 'w-[160px]' },
+                  { key: 'badge', label: 'Preview', className: 'w-[160px]' },
                   { key: 'usage', label: 'Usage' },
                 ]}
                 rows={TYPES.map(type => ({
@@ -222,6 +223,66 @@ export default function StatusBadgePage() {
                 { use: 'Small (24px) in tables and dense layouts',           avoid: 'Using Small as the default in spacious in-page layouts', implemented: 'Yes' },
                 { use: 'Medium (32px) in spacious in-page contexts',         avoid: 'Using Medium in tables or dense list layouts',           implemented: 'No' },
               ]} />
+            </div>
+
+          </div>
+        )}
+
+        {/* ── Reference ── */}
+        {tab === 'reference' && (
+          <div className="flex flex-col gap-[var(--spacing-48)]">
+
+            {/* Employee Status */}
+            <div>
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">Employee status</h2>
+              <div className="w-full">
+                <div className="flex gap-[var(--spacing-24)] py-[var(--spacing-12)] px-[var(--spacing-16)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)]">
+                  <div className="w-[140px] shrink-0 text-[14px] font-semibold text-[var(--color-grey-900)]">Status</div>
+                  <div className="flex-1 text-[14px] font-semibold text-[var(--color-grey-900)]">Description</div>
+                </div>
+                {[
+                  { type: 'Pending'     as StatusBadgeType, label: 'Pending',     description: 'Employee record is awaiting action or verification before becoming active' },
+                  { type: 'Warning'     as StatusBadgeType, label: 'New starter', description: 'Employee has recently joined and their starter details are being processed' },
+                  { type: 'Success'     as StatusBadgeType, label: 'Active',      description: 'Employee is currently employed and active on the payroll' },
+                  { type: 'Inactive'    as StatusBadgeType, label: 'Inactive',    description: 'Employee record exists but is not currently active on the payroll' },
+                  { type: 'Error'       as StatusBadgeType, label: 'Error',       description: 'An issue has been detected with the employee record that requires attention' },
+                  { type: 'Inactive'    as StatusBadgeType, label: 'Leaver',      description: 'Employee has left the company and is no longer active on the payroll' },
+                ].map((row, i, arr) => (
+                  <div key={row.label} className={`flex gap-[var(--spacing-24)] items-center py-[var(--spacing-16)] px-[var(--spacing-16)]${i < arr.length - 1 ? ' border-b border-[var(--color-grey-300)]' : ''}`}>
+                    <div className="w-[140px] shrink-0">
+                      <StatusBadge type={row.type} size="small" label={row.label} />
+                    </div>
+                    <div className="flex-1 text-[14px] font-medium text-[var(--color-grey-900)]">{row.description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RTI */}
+            <div>
+              <h2 className="text-[20px] font-semibold leading-[28px] text-[var(--color-text-default)] mb-[var(--spacing-16)]">RTI</h2>
+              <div className="w-full">
+                {/* Header */}
+                <div className="flex gap-[var(--spacing-24)] py-[var(--spacing-12)] px-[var(--spacing-16)] border-b border-[var(--color-grey-300)] bg-[var(--color-grey-100)]">
+                  <div className="w-[140px] shrink-0 text-[14px] font-semibold text-[var(--color-grey-900)]">Status</div>
+                  <div className="flex-1 text-[14px] font-semibold text-[var(--color-grey-900)]">Description</div>
+                </div>
+                {/* Rows */}
+                {[
+                  { type: 'Information' as StatusBadgeType, label: 'Scheduled', description: 'Waiting to be "sent" through automation or manual submission' },
+                  { type: 'Pending'     as StatusBadgeType, label: 'Pending',   description: 'Submission is sent to HMRC and it\'s awaiting a response' },
+                  { type: 'Success'     as StatusBadgeType, label: 'Accepted',  description: 'Accepted by HMRC' },
+                  { type: 'Error'       as StatusBadgeType, label: 'Rejected',  description: 'Rejected by HMRC' },
+                  { type: 'Inactive'    as StatusBadgeType, label: 'Closed',    description: 'More common for EPS, but basically the period has passed (19th of the month) so you cannot send, or edit the submission' },
+                ].map((row, i, arr) => (
+                  <div key={row.label} className={`flex gap-[var(--spacing-24)] items-center py-[var(--spacing-16)] px-[var(--spacing-16)]${i < arr.length - 1 ? ' border-b border-[var(--color-grey-300)]' : ''}`}>
+                    <div className="w-[140px] shrink-0">
+                      <StatusBadge type={row.type} size="small" label={row.label} />
+                    </div>
+                    <div className="flex-1 text-[14px] font-medium text-[var(--color-grey-900)]">{row.description}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
