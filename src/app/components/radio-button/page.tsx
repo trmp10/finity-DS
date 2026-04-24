@@ -167,7 +167,7 @@ export default function RadioButtonPage() {
 
             {/* Horizontal layout */}
             <Section title="Horizontal layout" description="Radio groups may be arranged vertically or horizontally depending on the context and available space. When possible, use a vertical layout to support easier scanning and readability. A horizontal layout may be used when the number of options is small and labels are short." compact last>
-              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center">
+              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center pointer-events-none">
                 <RadioGroup
                   name="plan"
                   value={plan}

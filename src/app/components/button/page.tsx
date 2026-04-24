@@ -194,7 +194,7 @@ export default function ButtonPage() {
               <div className="grid grid-cols-3 gap-[var(--spacing-16)]">
                 {([['large', '48px'], ['medium', '40px'], ['small', '32px']] as const).map(([size, px]) => (
                   <div key={size}>
-                    <div className="flex items-center justify-center bg-[#FAFAFA] rounded-[var(--spacing-12)] h-[240px]">
+                    <div className="flex items-center justify-center bg-[#FAFAFA] rounded-[var(--spacing-12)] h-[240px] pointer-events-none">
                       <Button variant="primary" size={size}>{size.charAt(0).toUpperCase() + size.slice(1)}</Button>
                     </div>
                     <p className="mt-[var(--spacing-12)] text-[14px] font-medium text-[var(--color-grey-900)]">{size.charAt(0).toUpperCase() + size.slice(1)} <span className="font-medium text-[var(--color-text-tertiary)]">{px}</span></p>

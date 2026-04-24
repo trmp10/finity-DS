@@ -160,7 +160,7 @@ export default function CheckboxPage() {
 
             {/* Rich label */}
             <Section title="Rich label" compact>
-              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center">
+              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center pointer-events-none">
                 <Checkbox
                   checked={agreed}
                   onChange={(e) => setAgreed(e.target.checked)}
@@ -178,7 +178,7 @@ export default function CheckboxPage() {
 
             {/* Multi-line label */}
             <Section title="Multi-line label" compact last>
-              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center">
+              <div className="bg-[#FAFAFA] p-[var(--spacing-48)] flex items-center justify-center pointer-events-none">
                 <div className="max-w-[500px]">
                   <Checkbox
                     label={

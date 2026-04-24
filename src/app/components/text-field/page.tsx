@@ -1,34 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { TextField } from '@finity/design-system';
+import { TextField, HelperText } from '@finity/design-system';
 import { Check, Close } from '@finity/design-system';
 import { Tabs } from '@/components/tabs/Tabs';
 import { Section, DemoTable } from '@/app/_components/doc';
-
-const ICON_INFO  = 'https://www.figma.com/api/mcp/asset/4ae80c30-d63e-4933-b59c-c695f78570f4';
-const ICON_ERROR = 'https://www.figma.com/api/mcp/asset/6ea5d07b-ac17-4b51-9818-714537eb80f3';
-
-function FigmaIcon({ src, inset = '4.17%' }: { src: string; inset?: string }) {
-  return (
-    <div className="shrink-0 mt-[2px] relative size-[16px]">
-      <div className="absolute" style={{ inset }}>
-        <img alt="" className="absolute inset-0 size-full" src={src} />
-      </div>
-    </div>
-  );
-}
-
-function HelperRow({ type = 'default', children }: { type?: 'default' | 'error'; children: string }) {
-  const icon  = type === 'error' ? ICON_ERROR : ICON_INFO;
-  const color = type === 'error' ? '#DC2626'  : '#525252';
-  return (
-    <div className="flex items-start gap-[var(--spacing-4)]">
-      <FigmaIcon src={icon} />
-      <span className="text-[14px] font-medium leading-[20px] tracking-[0.3px]" style={{ color }}>{children}</span>
-    </div>
-  );
-}
 
 function formatCurrency(raw: string): string {
   const [integer, decimal] = raw.split('.');
@@ -67,7 +43,7 @@ function ErrorStateDemo() {
         onChange={(e) => setValue(e.target.value)}
         className="[&>div:first-of-type]:[box-shadow:0_0_0_2px_var(--color-red-600)] [&>div:first-of-type:hover:not(:focus-within)]:[box-shadow:0_0_0_2px_var(--color-red-600)] [&>div:first-of-type:focus-within]:[box-shadow:0_0_0_3px_var(--color-red-600)]"
       />
-      <HelperRow type="error">Error message</HelperRow>
+      <HelperText type="error">Error message</HelperText>
     </div>
   );
 }
@@ -78,7 +54,7 @@ const STATES: { label: string; description: string; node: React.ReactNode }[] = 
   { label: 'Error',       description: 'Indicates a validation error, always pair with an error message below the field',              node: <ErrorStateDemo /> },
   { label: 'Read-only',   description: 'Value is displayed but cannot be edited by the user',                                          node: <TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" readOnly /> },
   { label: 'Disabled',    description: 'Not interactive, greyed out to communicate unavailability',                                    node: <TextField tabIndex={-1} size="medium" label="Label" placeholder="Placeholder" disabled /> },
-  { label: 'Helper text', description: 'Additional guidance shown below the field to support the user',                                node: <div className="flex flex-col gap-[var(--spacing-4)]"><TextField tabIndex={-1} size="medium" label="Label" placeholder="Placeholder" /><HelperRow>Optional helper text</HelperRow></div> },
+  { label: 'Helper text', description: 'Additional guidance shown below the field to support the user',                                node: <div className="flex flex-col gap-[var(--spacing-4)]"><TextField tabIndex={-1} size="medium" label="Label" placeholder="Placeholder" /><HelperText>Optional helper text</HelperText></div> },
 ];
 
 function GuidelineTable({ rows }: { rows: { use: React.ReactNode; avoid: React.ReactNode; implemented: 'No' | 'Review' }[] }) {
@@ -352,7 +328,7 @@ export default function TextFieldPage() {
                     { label: 'Hover',     preview: <TextField tabIndex={-1} size="medium" label="Label" placeholder="Placeholder" className="[&>div:first-of-type]:[box-shadow:0_0_0_2px_var(--color-text-default)]" />,         bg: 'white',     border: 'grey 900 / 2px',  labelCol: 'grey 700', placeholder: 'grey 500' },
                     { label: 'Focus',     preview: <TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" className="[&>div:first-of-type]:[box-shadow:0_0_0_3px_var(--color-text-default)]" />,              bg: 'white',     border: 'grey 900 / 3px',  labelCol: 'grey 700', placeholder: '' },
                     { label: 'Active',    preview: <TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" />,                                                                                                  bg: 'white',     border: 'grey 400 / 1px',  labelCol: 'grey 700', placeholder: '' },
-                    { label: 'Error',     preview: <div className="flex flex-col gap-[var(--spacing-4)]"><TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" className="[&>div:first-of-type]:[box-shadow:0_0_0_2px_var(--color-red-600)]" /><HelperRow type="error">Error message</HelperRow></div>, bg: 'white',     border: 'red 600 / 2px',   labelCol: 'grey 700', placeholder: '' },
+                    { label: 'Error',     preview: <div className="flex flex-col gap-[var(--spacing-4)]"><TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" className="[&>div:first-of-type]:[box-shadow:0_0_0_2px_var(--color-red-600)]" /><HelperText type="error">Error message</HelperText></div>, bg: 'white',     border: 'red 600 / 2px',   labelCol: 'grey 700', placeholder: '' },
                     { label: 'Read-only', preview: <TextField tabIndex={-1} size="medium" label="Label" defaultValue="Value" readOnly />,                                                                                         bg: 'grey 100',  border: 'grey 300 / 1px',  labelCol: 'grey 700', placeholder: '' },
                     { label: 'Disabled',  preview: <TextField tabIndex={-1} size="medium" label="Label" placeholder="Placeholder" disabled />,                                                                                    bg: 'grey 200',  border: '—',               labelCol: 'grey 700', placeholder: 'grey 500' },
                     { label: 'Prefix',    preview: <TextField tabIndex={-1} size="medium" label="Label" placeholder="0.00" prefix="£" />,                                                                                        bg: 'white',     border: 'grey 400 / 1px',  labelCol: 'grey 700', placeholder: 'grey 500' },

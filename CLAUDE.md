@@ -51,6 +51,8 @@ Always check `src/components/` before creating a new component. Reuse and extend
 | `SearchField` | `src/components/search-field/SearchField.tsx` | Single-line search input. Props: `value`, `onChange`, `onClear`, `placeholder`. Shows clear button when value is non-empty. |
 | `TextArea` | `src/components/text-area/TextArea.tsx` | Multi-line text input. Props: `label`, `helperText`, `errorMessage`, `maxLength` (shows character counter), `readOnly`. |
 | `Checkbox` | `src/components/checkbox/Checkbox.tsx` | Checkbox input. Props: `label` (ReactNode), `checked`, `onChange`, `indeterminate`, `error`, `disabled`. Supports controlled and uncontrolled usage. |
+| `RadioButton` | `src/components/radio-button/RadioButton.tsx` | Single radio button. Props: `label` (ReactNode), `description` (ReactNode), `checked`, `onChange`, `error`, `disabled`. |
+| `RadioGroup` | `src/components/radio-button/RadioGroup.tsx` | Group of radio buttons. Props: `label`, `name`, `value`, `defaultValue`, `onChange`, `orientation` (`vertical` \| `horizontal`), `items`, `error`. |
 
 ---
 

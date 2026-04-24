@@ -80,8 +80,8 @@ const GENERAL_GROUPS: { letter: string; icons: { name: string; component: React.
     icons: [
       { name: 'Edit',               component: Icons.Edit               },
       { name: 'Extract',            component: Icons.Extract            },
-      { name: 'Reclamation',        component: Icons.Reclamation        },
-      { name: 'ReclamationFilled',  component: Icons.ReclamationFilled  },
+      { name: 'Exclamation',        component: Icons.Exclamation        },
+      { name: 'ExclamationFilled',  component: Icons.ExclamationFilled  },
     ],
   },
   {
@@ -254,8 +254,8 @@ export default function IconsPage() {
 
             <div className="shrink-0 w-[280px]">
               {[
-                { label: 'Created by',   value: 'Toni' },
-                { label: 'Updated by',   value: 'Toni' },
+                { label: 'Created by',     value: 'Toni' },
+                { label: 'Implemented by', value: '' },
                 { label: 'Last updated', value: '24/10/2025' },
               ].map((item, i) => (
                 <div

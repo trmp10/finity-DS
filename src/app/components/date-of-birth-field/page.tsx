@@ -99,8 +99,8 @@ export default function DateOfBirthFieldPage() {
             {/* Metadata */}
             <div className="shrink-0 w-[280px]">
               {[
-                { label: 'Created by',   value: 'toni'       },
-                { label: 'Updated by',   value: 'toni'       },
+                { label: 'Created by',     value: 'Toni'       },
+                { label: 'Implemented by', value: ''           },
                 { label: 'Last updated', value: '23/06/2025' },
               ].map((item, i) => (
                 <div

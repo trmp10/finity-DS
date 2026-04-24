@@ -18,6 +18,7 @@ const NAV = [
     items: [
       { href: '/components/button',               label: 'Button'          },
       { href: '/components/checkbox',             label: 'Checkbox'        },
+      { href: '/components/combobox',             label: 'ComboBox'        },
       { href: '/components/date-of-birth-field', label: 'Date of birth'   },
       { href: '/components/frequency-badge',      label: 'Frequency badge' },
       { href: '/components/helper-text',          label: 'Helper text'     },
@@ -26,7 +27,7 @@ const NAV = [
       { href: '/components/pin-code-field',       label: 'PIN code'        },
       { href: '/components/radio-button',         label: 'Radio group'     },
       { href: '/components/search-field',         label: 'Search field'    },
-      // { href: '/components/select',               label: 'Select'          },
+      { href: '/components/select',               label: 'Select'          },
       { href: '/components/status-badge',           label: 'Status badge'    },
       { href: '/components/text-area',             label: 'Text area'       },
       { href: '/components/text-field',            label: 'Text field'      },
